@@ -1,0 +1,30 @@
+
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
+a {
+    color: wheat;
+}
+
+body {
+    font-family: "Ubuntu",serif;
+    background-color: #0D1117;
+    color: white;
+}
+
+.mobile_warning {
+    text-align: center;
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .mobile_warning {
+        display: block;
+    }
+}

@@ -1,0 +1,29 @@
+
+body {
+    padding-left: 30px;
+    font-size: large;
+    word-break: break-word;
+    padding-right: 50px;
+    max-width: 40%;
+    padding-bottom: 100px;
+}
+
+a {
+    color: wheat;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+sup {
+    font-size: x-small;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        max-width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,27 @@
+
+html {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+h1 {
+    
+}
+
+a {
+    color: wheat;
+}
+
+.article {
+    width: 40%;
+}
+
+@media screen and (max-width: 800px) {
+    .article {
+        width: 100%;
+    }
+    html {
+        margin-left: 0;
+        margin-top: 0;
+    }
+}
