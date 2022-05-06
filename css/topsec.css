@@ -24,6 +24,10 @@
     border-radius: 10px;
 }
 
+.email_field_label {
+    display: none;
+}
+
 .button {
     border: 2px solid #FFFFFF;
     background-color: #0D1117;
