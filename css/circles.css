@@ -125,7 +125,7 @@ modification of https://codepen.io/alvarotrigo/pen/GRvYNax
 }
 
 @media screen and (max-width: 800px) {
-    .area {
+    .area, .circles {
         display: none;
     }
 }

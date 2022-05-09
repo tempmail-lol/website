@@ -46,3 +46,10 @@
     color: #0D1117;
     border: black 2px solid;
 }
+
+@media screen and (max-width: 800px) {
+    .email_field {
+        width: 300px;
+        font-size: 14px;
+    }
+}
