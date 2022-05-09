@@ -48,6 +48,10 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
 setInterval(() => {
     fetch(AUTH_URL_BASE + token).then(res => res.json()).then(data => {
         console.log(data);
+        if(data.token === "invalid") {
+            localStorage.clear();
+            location.reload();
+        }
         if(data.email instanceof Array) {
             document.getElementById("click_prompt").style.display = "block";
             data.email.forEach(email => {
