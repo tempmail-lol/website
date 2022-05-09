@@ -23,6 +23,10 @@ body {
     display: none;
 }
 
+.cookies {
+    text-align: center;
+}
+
 @media screen and (max-width: 800px) {
     .mobile_warning {
         display: block;
