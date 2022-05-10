@@ -29,7 +29,7 @@ if(emails.length > 0) {
 //if the "creation_time" in unix milliseconds is less than the current time, then the token is expired
 const ct = localStorage.getItem("creation_time");
 if(ct && ct < Date.now()) {
-    localStorage.clear();
+    clearLS();
     location.reload();
 }
 
@@ -57,7 +57,7 @@ setInterval(() => {
     fetch(AUTH_URL_BASE + token).then(res => res.json()).then(data => {
         console.log(data);
         if(data.token === "invalid") {
-            localStorage.clear();
+            clearLS();
             location.reload();
         }
         if(data.email instanceof Array) {
