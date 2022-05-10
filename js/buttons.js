@@ -24,7 +24,10 @@ function regenerate() {
     //are you sure dialog
     const sure = confirm("Are you sure?  Your old email will be deleted as well as your inbox.");
     if(sure) {
-        localStorage.clear();
+        localStorage.removeItem("emails");
+        localStorage.removeItem("address");
+        localStorage.removeItem("token");
+        localStorage.removeItem("creation_time");
         location.reload();
     }
 }
