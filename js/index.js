@@ -14,6 +14,14 @@ if(localStorage.getItem("emails")) {
 let address;
 let token;
 
+function clearLS() {
+    //don't clear everything as there may be other data
+    localStorage.removeItem("emails");
+    localStorage.removeItem("address");
+    localStorage.removeItem("token");
+    localStorage.removeItem("creation_time");
+}
+
 if(emails.length > 0) {
     document.getElementById("click_prompt").style.display = "block";
 }
