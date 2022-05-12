@@ -10,6 +10,7 @@ function updateStatsElement(emails, clients, text = "We've processed {emails} em
     stats.innerText = text.replace("{emails}", emails).replace("{clients}", clients);
 }
 
+//listen for just the websocket stats and don't generate an email.
 const ws = new WebSocket("wss://gateway.exploding.email/stats");
 
 ws.onmessage = function(event) {
