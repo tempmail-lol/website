@@ -41,9 +41,12 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
 } else {
     fetch(GENERATE_URL).then(res => res.json()).then(data => {
         console.log(data);
+        
         address = data.address;
         token = data.token;
+        
         document.getElementById("email_field").value = address;
+        
         localStorage.setItem("address", address);
         localStorage.setItem("token", token);
         
@@ -53,6 +56,7 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
     
 }
 
+//fetch emails
 setInterval(() => {
     fetch(AUTH_URL_BASE + token).then(res => res.json()).then(data => {
         console.log(data);
@@ -60,12 +64,25 @@ setInterval(() => {
             clearLS();
             location.reload();
         }
+        
+        //if there are new emails
         if(data.email instanceof Array) {
             document.getElementById("click_prompt").style.display = "block";
+            
+            let old_size = emails.length;
+            
             data.email.forEach(email => {
                 createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date);
             });
+            
             emails.push(...data.email);
+            
+            //reload if the emails haven't displayed (kind of a duct tape solution, but whatever)
+            setTimeout(() => {
+                if(old_size === document.getElementById("email_list").children.length - 1) {
+                    location.reload();
+                }
+            }, 2000);
         }
     });
 }, 5000);
