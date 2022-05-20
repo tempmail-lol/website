@@ -79,7 +79,7 @@ setInterval(() => {
             
             //reload if the emails haven't displayed (kind of a duct tape solution, but whatever)
             setTimeout(() => {
-                if(old_size === document.getElementById("email_list").children.length - 1) {
+                if(old_size !== document.getElementById("email_list").children.length - 1) {
                     location.reload();
                 }
             }, 2000);
