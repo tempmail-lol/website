@@ -73,6 +73,19 @@ setInterval(() => {
             
             data.email.forEach(email => {
                 createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date);
+                
+                //if the page is not visible, add an identifier to the title until the user goes back on
+                if(document.hidden) {
+                    const identifier = "(NEW EMAIL!)";
+                    
+                    if(document.title.indexOf(identifier) === -1) {
+                        document.title = identifier + " " + document.title;
+                        
+                        document.addEventListener("visibilitychange", () => {
+                            document.title = document.title.replace(identifier, "");
+                        });
+                    }
+                }
             });
             
             emails.push(...data.email);
