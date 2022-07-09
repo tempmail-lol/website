@@ -76,7 +76,7 @@ setInterval(() => {
                 
                 //if the page is not visible, add an identifier to the title until the user goes back on
                 if(document.hidden) {
-                    const identifier = "(NEW EMAIL!)";
+                    const identifier = "(1)";
                     
                     if(document.title.indexOf(identifier) === -1) {
                         document.title = identifier + " " + document.title;
