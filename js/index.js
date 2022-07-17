@@ -23,6 +23,7 @@ function clearLS() {
 }
 
 if(emails && emails.length && emails.length > 0) {
+    console.log(`click prompt 1`);
     document.getElementById("click_prompt").style.display = "block";
 }
 
@@ -67,6 +68,7 @@ setInterval(() => {
         
         //if there are new emails
         if(data.email instanceof Array) {
+            console.log(`click prompt 2`);
             document.getElementById("click_prompt").style.display = "block";
             
             let old_size = emails.length;
