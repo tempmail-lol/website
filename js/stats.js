@@ -10,14 +10,17 @@ function updateStatsElement(emails, clients, text = "We've processed {emails} em
     stats.innerText = text.replace("{emails}", emails).replace("{clients}", clients);
 }
 
-//listen for just the websocket stats and don't generate an email.
-const ws = new WebSocket("wss://gateway.exploding.email/stats");
+//fetch stats
+setInterval(() => {
+    fetch("https://api.tempmail.lol/stats").then(res => res.json()).then((data) => {
+        console.log(data);
+        updateStatsElement(data.emails_received, data.clients_connected);
+    });
+}, 5000);
 
-ws.onmessage = function(event) {
-    const data = JSON.parse(event.data);
-    if(data.op === 3) {
-        updateStatsElement(data.statistics.emails_received, data.statistics.clients);
-    }
-}
+fetch("https://api.tempmail.lol/stats").then(res => res.json()).then((data) => {
+    console.log(data);
+    updateStatsElement(data.emails_received, data.clients_connected);
+});
 
 updateStatsElement(0, 0, "Loading...");
