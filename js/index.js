@@ -22,7 +22,7 @@ function clearLS() {
     localStorage.removeItem("creation_time");
 }
 
-if(emails.length > 0) {
+if(emails && emails.length && emails.length > 0) {
     document.getElementById("click_prompt").style.display = "block";
 }
 
