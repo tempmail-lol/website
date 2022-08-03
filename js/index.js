@@ -43,6 +43,8 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
     
     let url = GENERATE_URL;
     
+    console.log(`rush_mode: ${localStorage.getItem("rush_mode")}`);
+    
     if(localStorage.getItem("rush_mode") && localStorage.getItem("rush_mode") === "true") {
         url = GENERATE_RUSH;
     }
