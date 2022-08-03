@@ -1,5 +1,6 @@
 
 const GENERATE_URL  = "https://api.tempmail.lol/generate";
+const GENERATE_RUSH = "https://api.tempmail.lol/generate/rush";
 const AUTH_URL_BASE = "https://api.tempmail.lol/auth/";
 
 let emails = [];
@@ -39,7 +40,13 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
     
     document.getElementById("email_field").value = address;
 } else {
-    fetch(GENERATE_URL).then(res => res.json()).then(data => {
+    
+    let url;
+    
+    //if the url includes #rush, set the url to the rush url
+    url = window.location.href.includes("#rush") ? GENERATE_RUSH : GENERATE_URL;
+    
+    fetch(url).then(res => res.json()).then(data => {
         console.log(data);
         
         address = data.address;
@@ -104,3 +111,9 @@ setInterval(() => {
     document.getElementById("waiting").innerText = waiting_text + ".".repeat(periods);
     periods = Math.max(1, (periods + 1) % 4);
 }, 1000);
+
+function onRushSwitch() {
+    const checked = document.getElementById("rush_mode").checked;
+    //if checked, add #rush to the url, otherwise remove it
+    window.history.pushState(null, null, checked ? window.location.href + "#rush" : window.location.href.replace("#rush", ""));
+}

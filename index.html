@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="/css/bottomsec.css">
     <link rel="stylesheet" href="/css/emailmodal.css">
     <link rel="stylesheet" href="/css/ads.css">
+    <link rel="stylesheet" href="/css/switch.css">
     
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
     
@@ -80,6 +81,12 @@
     <section class="email_buttons">
         <button id="copy_button" class="button" onclick="copyToClipboard()">Copy</button>
         <button id="regenerate_button" class="button" onclick="regenerate()">Regenerate</button>
+        <br>
+        <h3>(NEW) enable Rush Mode.<br>Useful if you cannot use normal email addresses.  <a href="https://tempmail.lol/news/2022/08/03/introducing-rush-mode-for-tempmail/">Read more</a>.</h3>
+        <label class="switch">
+            <input type="checkbox" id="rush_mode" onclick="onRushSwitch()">
+            <span class="slider round"></span>
+        </label>
     </section>
 </section>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5608964063399729"
