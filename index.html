@@ -56,7 +56,9 @@
             localStorage.removeItem("address");
             localStorage.removeItem("token");
             localStorage.removeItem("creation_time");
-            location.reload();
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
         }
     </script>
 </head>
