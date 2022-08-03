@@ -44,6 +44,13 @@
         
         gtag('config', 'G-J8RPSFRNYH');
     </script>
+    <script>
+        function onRushSwitch() {
+            const checked = document.getElementById("rush_mode").checked;
+            //if checked, add #rush to the url, otherwise remove it
+            window.history.pushState(null, null, checked ? window.location.href + "#rush" : window.location.href.replace("#rush", ""));
+        }
+    </script>
 </head>
 <body>
 <nav>

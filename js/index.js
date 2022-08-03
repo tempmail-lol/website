@@ -111,9 +111,3 @@ setInterval(() => {
     document.getElementById("waiting").innerText = waiting_text + ".".repeat(periods);
     periods = Math.max(1, (periods + 1) % 4);
 }, 1000);
-
-function onRushSwitch() {
-    const checked = document.getElementById("rush_mode").checked;
-    //if checked, add #rush to the url, otherwise remove it
-    window.history.pushState(null, null, checked ? window.location.href + "#rush" : window.location.href.replace("#rush", ""));
-}
