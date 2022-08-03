@@ -41,10 +41,11 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
     document.getElementById("email_field").value = address;
 } else {
     
-    let url;
+    let url = GENERATE_URL;
     
-    //if the url includes #rush, set the url to the rush url
-    url = window.location.href.includes("#rush") ? GENERATE_RUSH : GENERATE_URL;
+    if(localStorage.getItem("rush_mode") && localStorage.getItem("rush_mode") === "true") {
+        url = GENERATE_RUSH;
+    }
     
     fetch(url).then(res => res.json()).then(data => {
         console.log(data);
