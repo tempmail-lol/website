@@ -103,6 +103,12 @@
         <label class="switch">
             <input type="checkbox" id="rush_mode" onclick="onRushSwitch()">
             <span class="slider round"></span>
+            <script>
+                const rush_mode = localStorage.getItem("rush_mode");
+                if(rush_mode === "true") {
+                    document.getElementById("rush_mode").checked = true;
+                }
+            </script>
         </label>
     </section>
 </section>
