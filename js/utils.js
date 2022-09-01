@@ -36,15 +36,18 @@ function createEmailElement(from, to, subject, body, html, date) {
     //will have <td> for from, date, and subject
     const fromTd = document.createElement("td");
     const dateTd = document.createElement("td");
+    const toTd = document.createElement("td");
     const subjectTd = document.createElement("td");
     
     fromTd.innerHTML = from;
     dateTd.innerHTML = formatDate(date);
+    toTd.innerHTML = to;
     subjectTd.innerHTML = subject;
     
     //append to inbox_table
     email.appendChild(fromTd);
     email.appendChild(dateTd);
+    email.appendChild(toTd);
     email.appendChild(subjectTd);
     
     email.style.cursor = "pointer";
