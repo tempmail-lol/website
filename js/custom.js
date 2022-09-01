@@ -17,14 +17,14 @@ if(emails && emails.length && emails.length > 0) {
 
 function clearLS() {
     localStorage.removeItem("domain");
-    localStorage.removeItem("token");
+    localStorage.removeItem("c_token");
     location.reload();
 }
 
 //fetch emails
 function startInterval() {
     setInterval(() => {
-        fetch(`https://api.tempmail.lol/custom/${localStorage.getItem("token")}/${localStorage.getItem("domain")}`).then(res => res.json()).then(data => {
+        fetch(`https://api.tempmail.lol/custom/${localStorage.getItem("c_token")}/${localStorage.getItem("domain")}`).then(res => res.json()).then(data => {
             console.log(data);
             
             //if there are new emails
@@ -78,7 +78,7 @@ function yesCustomDomains() {
     if(domain && token) {
         //save the domain and token
         localStorage.setItem("domain", domain);
-        localStorage.setItem("token", token);
+        localStorage.setItem("c_token", token);
         
         //reload the page
         location.reload();
@@ -117,7 +117,7 @@ if(localStorage.getItem("domain")) {
     document.getElementById("email_set").hidden = false;
     
     address = localStorage.getItem("domain");
-    token = localStorage.getItem("token");
+    token = localStorage.getItem("c_token");
     
     console.log(address, token);
     
