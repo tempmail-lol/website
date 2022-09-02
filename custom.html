@@ -94,6 +94,30 @@
     <h1>Have you used this website with custom domains before?</h1>
     <button class="button" onclick="yesCustomDomains()">Yes</button>
     <button class="button" onclick="noCustomDomains()">No</button>
+    <p>Note: public custom domains use the main website (the Alternative Domains switch)</p>
+    <p>If you want to remove a public domain, <a href="/contact.html">please email us</a>.</p>
+</section>
+<section class="phase_1.9 email" id="phase1.9" hidden>
+    <h1>Would you like your domain to be added to the public pool of domains?</h1>
+    <p>If you select yes, anyone will be able to generate an address which uses your domain.</p>
+    <p>Public domains are also checked regularly to ensure that they still work.  Domains may be removed at any time for any reason.</p>
+    <p>Public domains must also be approved before they are added, this usually takes less than 8 hours.</p>
+    <p>If you select no, you will be given a token to access the emails for the domain.</p>
+    <button class="button" onclick="opt19Public()">Public</button>
+    <button class="button" onclick="opt19Private()">Private</button>
+</section>
+<section class="phase_1.1whatever email" id="phase_1.9.9" hidden>
+    <h1>Adding Public Domains</h1>
+    <p>First, change the MX record of your domain to be:</p>
+    <pre>mx.[your-domain]</pre>
+    <p>Where [your-domain] is your website URL.</p>
+    <p>Afterwards, create an "A" record with the name "mx" that points to:</p>
+    <pre>129.146.248.147</pre>
+    <p>Once you have finished, input your domain name and click continue.</p>
+    <p>IMPORTANT: ANYONE WILL BE ABLE TO RECEIVE EMAIL AT THIS DOMAIN.  Make sure you know what you are doing.</p>
+    <p>Domains with an existing _tmpml text record will be rejected.</p>
+    <input type="text" class="email_field" id="input_domain"><br>
+    <button class="button" onclick="continueCustom199()">Continue</button>
 </section>
 <section class="phase_2 email" id="phase2" hidden>
     <h1>Please copy the following two strings:</h1>

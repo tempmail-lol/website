@@ -97,10 +97,31 @@ function sha512(str) {
     return window.crypto.subtle.digest("SHA-512", data);
 }
 
-async function noCustomDomains() {
+function noCustomDomains() {
     document.getElementById("phase1").hidden = true;
-    document.getElementById("phase2").hidden = false;
+    document.getElementById("phase1.9").hidden = false;
+}
+
+function opt19Public() {
+    document.getElementById("phase1.9").hidden = true;
+    document.getElementById("phase_1.9.9").hidden = false;
+}
+
+async function continueCustom199() {
+    const dm = document.getElementById("input_domain").value;
     
+    if(!dm || dm.length === 0) return;
+    
+    await fetch("/addpublic/" + dm);
+    
+    alert("Success!  Your domain has been queued.  It will appear in alternative domains within the next 1 to 8 hours.");
+    
+    location.reload();
+}
+
+async function opt19Private() {
+    document.getElementById("phase1.9").hidden = true;
+    document.getElementById("phase2").hidden = false;
     const str = randomBase64UrlString();
     let strSHA512 = (await sha512(str));
     //convert to hex
@@ -124,4 +145,8 @@ if(localStorage.getItem("domain")) {
     document.getElementById("email_field").value = address;
     
     startInterval();
+}
+
+function p19Yes() {
+    
 }
