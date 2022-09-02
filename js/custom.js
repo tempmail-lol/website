@@ -107,6 +107,12 @@ function opt19Public() {
     document.getElementById("phase_1.9.9").hidden = false;
 }
 
+//if the title hash has #p19, run noCustomDomains and opt19Prublic
+if(location.hash === "#p19") {
+    noCustomDomains();
+    opt19Public();
+}
+
 async function continueCustom199() {
     const dm = document.getElementById("input_domain").value;
     
