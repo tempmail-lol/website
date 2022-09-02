@@ -26,8 +26,9 @@ function formatDate(date) {
  * @param body {string}
  * @param html {string}
  * @param date {number}
+ * @param custom {boolean}
  */
-function createEmailElement(from, to, subject, body, html, date) {
+function createEmailElement(from, to, subject, body, html, date, custom) {
     
     //hide the "Waiting..." message
     document.getElementById('waiting').style.display = "none";
@@ -36,18 +37,22 @@ function createEmailElement(from, to, subject, body, html, date) {
     //will have <td> for from, date, and subject
     const fromTd = document.createElement("td");
     const dateTd = document.createElement("td");
-    const toTd = document.createElement("td");
     const subjectTd = document.createElement("td");
+    
+    let toTd;
+    if(custom) {
+        toTd = document.createElement("td");
+        toTd.innerHTML = to;
+    }
     
     fromTd.innerHTML = from;
     dateTd.innerHTML = formatDate(date);
-    toTd.innerHTML = to;
     subjectTd.innerHTML = subject;
     
     //append to inbox_table
     email.appendChild(fromTd);
     email.appendChild(dateTd);
-    email.appendChild(toTd);
+    custom && email.appendChild(toTd);
     email.appendChild(subjectTd);
     
     email.style.cursor = "pointer";

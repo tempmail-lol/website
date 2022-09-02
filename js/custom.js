@@ -4,7 +4,7 @@ let emails = [];
 if(localStorage.getItem("emails")) {
     emails = JSON.parse(localStorage.getItem("emails"));
     emails.forEach(email => {
-        createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date);
+        createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date, true);
     });
 }
 
@@ -34,7 +34,7 @@ function startInterval() {
                 let old_size = emails.length;
                 
                 data.email.forEach(email => {
-                    createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date);
+                    createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date, true);
                     
                     //if the page is not visible, add an identifier to the title until the user goes back on
                     if(document.hidden) {
