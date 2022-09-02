@@ -112,7 +112,7 @@ async function continueCustom199() {
     
     if(!dm || dm.length === 0) return;
     
-    await fetch("/addpublic/" + dm);
+    await fetch("https://api.tempmail.lol/addpublic/" + dm);
     
     alert("Success!  Your domain has been queued.  It will appear in alternative domains within the next 1 to 8 hours.");
     
