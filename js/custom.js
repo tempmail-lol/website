@@ -120,7 +120,7 @@ async function continueCustom199() {
     
     await fetch("https://api.tempmail.lol/addpublic/" + dm);
     
-    alert("Success!  Your domain has been queued.  It will appear in alternative domains within the next 1 to 8 hours if approved.");
+    alert("Success!  Your domain has been added.  If it is found to be malicious, it will be removed.");
     
     location.reload();
 }
