@@ -1,0 +1,98 @@
+
+html {
+    margin-left: 5px;
+}
+
+.pricing_section {
+    text-align: center;
+    position: relative;
+    float: left;
+    width: 50%;
+    height: 200vh;
+}
+
+.pricing_container {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.premium_background {
+    background-color: #6d4aff;
+    color: white;
+    border-radius: 10px;
+}
+
+.normal_background {
+    background-color: #161c27;
+    color: white;
+    border-radius: 10px;
+}
+
+.plus_color {
+    
+}
+
+.price {
+    font-size: xx-large;
+}
+
+.unit {
+    alignment: left;
+}
+
+.feature {
+    font-size: 20px;
+}
+
+.features {
+    text-align: left;
+}
+
+li {
+    padding-top: 3.5%;
+}
+
+.disclaimers {
+    bottom: 50px;
+    font-size: 12px;
+    text-align: left;
+    padding-left: 5px;
+    max-width: 80%;
+}
+
+.sup {
+    font-size: 16px;
+}
+
+.sup2 {
+    font-size: 14px;
+}
+
+.sub {
+    font-size: 14px;
+}
+
+.pricing_header {
+    text-align: center;
+}
+
+.tier_name {
+    padding-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .pricing_section {
+        float: none;
+        width: 100%;
+    }
+    
+    .pricing_container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.maxwidth {
+    width: 90%;
+    text-align: center;
+}

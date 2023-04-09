@@ -24,7 +24,12 @@ function clearLS() {
 //fetch emails
 function startInterval() {
     setInterval(() => {
-        fetch(`https://api.tempmail.lol/custom/${localStorage.getItem("c_token")}/${localStorage.getItem("domain")}`).then(res => res.json()).then(data => {
+        fetch(`https://api.tempmail.lol/custom/${localStorage.getItem("c_token")}/${localStorage.getItem("domain")}`, {
+            headers: {
+                "X-BananaCrumbs-ID": localStorage.getItem("account_id"),
+                "X-BananaCrumbs-MFA": localStorage.getItem("mfa_token"),
+            }
+        }).then(res => res.json()).then(data => {
             console.log(data);
             
             //if there are new emails
@@ -52,6 +57,8 @@ function startInterval() {
                 
                 emails.push(...data.email);
             }
+        }).catch(e => {
+            alert(`Error using custom domains.  Are your account details correct?`);
         });
     }, 5000);
 }
@@ -73,12 +80,16 @@ function yesCustomDomains() {
     //prompt for the domain and token
     const domain = prompt("Enter your domain name");
     const token = prompt("Enter the token we gave you before (note: we will NOT alert you if it is invalid)");
+    const account_id = prompt("Enter your 24-number BananaCrumbs Account ID");
+    const mfa_token = prompt("Enter your 32-character MFA Token");
     
     //if the user didn't cancel
-    if(domain && token) {
+    if(domain && token && account_id && mfa_token) {
         //save the domain and token
         localStorage.setItem("domain", domain);
         localStorage.setItem("c_token", token);
+        localStorage.setItem("account_id", account_id);
+        localStorage.setItem("mfa_token", mfa_token);
         
         //reload the page
         location.reload();
@@ -290,7 +301,7 @@ function copyToClipboard() {
         }, 3000);
     }).catch(err => {
         console.error("Could not copy email: ", err);
-        alert("Could not copy email, please report this error to bugs@exploding.email: " + err);
+        alert("Could not copy email, please report this error to bugs@bananacrumbs.us: " + err);
     });
     
     
@@ -306,4 +317,15 @@ function regenerate() {
         localStorage.removeItem("creation_time");
         location.reload();
     }
+}
+
+function verifyToken(secret, token) {
+    if (!token || !token.length) return null;
+    
+    const unformatted = secret.replace(/\W+/g, "").toUpperCase();
+    const bin = b32.decode(unformatted);
+    
+    return notp.totp.verify(token.replace(/\W+/g, ""), bin, {
+        time: 30,
+    });
 }

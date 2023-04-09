@@ -101,7 +101,7 @@
     <h1>Would you like your domain to be added to the public pool of domains?</h1>
     <p>If you select yes, anyone will be able to generate an address which uses your domain.</p>
     <p>Public domains are also checked regularly to ensure that they still work.  Domains may be removed at any time for any reason.</p>
-    <p>If you select no, you will be given a token to access the emails for the domain.</p>
+    <p>If you select no, you will be given an input for your BananaCrumbs ID and Token to use your domain.</p>
     <button class="button" onclick="opt19Public()">Public</button>
     <button class="button" onclick="opt19Private()">Private</button>
 </section>
@@ -122,6 +122,7 @@
 </section>
 <section class="phase_2 email" id="phase2" hidden>
     <h1>Please copy the following two strings:</h1>
+    <h2>Note: you will need <a href="https://tempmail.lol/pricing.html">TempMail Plus</a> to use private domains.</h2>
     <h3>Add this string as a TXT record with the name "_tmpml":</h3>
     <pre id="domain_hash"></pre>
     <h3>Save the string below somewhere.  You will need it to access the inbox:</h3>
