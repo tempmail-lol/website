@@ -25,10 +25,13 @@ function clearLS() {
 function startInterval() {
     setInterval(() => {
         fetch(`https://api.tempmail.lol/custom/${localStorage.getItem("c_token")}/${localStorage.getItem("domain")}`, {
+            // headers: {
+            //     "X-BananaCrumbs-ID": localStorage.getItem("account_id"),
+            //     "X-BananaCrumbs-MFA": localStorage.getItem("mfa_token"),
+            // }
             headers: {
-                "X-BananaCrumbs-ID": localStorage.getItem("account_id"),
-                "X-BananaCrumbs-MFA": localStorage.getItem("mfa_token"),
-            }
+                "Authorization": `${localStorage.getItem("account_id")},${localStorage.getItem("mfa_token")}`
+            },
         }).then(res => res.json()).then(data => {
             console.log(data);
             
