@@ -1,6 +1,7 @@
 
 .header {
     text-align: center;
+    padding-top: 25px;
 }
 
 .desc {
@@ -12,6 +13,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding-bottom: 25px;
 }
 
 .email_field {
@@ -29,11 +31,11 @@
 }
 
 .button {
-    border: 2px solid #FFFFFF;
-    background-color: #0D1117;
+    border: 2px solid #000000;
+    background-color: #d5d5d5;
     text-align: center;
     font-size: x-large;
-    color: white;
+    color: #000000;
     border-radius: 10px;
     padding: 10px;
     cursor: pointer;

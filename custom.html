@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate temporary/disposable email addresses to use for other websites!">
     <meta name="keywords" content="tempmail, TempMail, Temporary Email, generator, Temporary Email Generator">
-    <meta property="og:title" content="TempMail.lol" />
+    <meta property="og:title" content="TempMail" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tempmail.lol/custom.html" />
     <meta property="og:image" content="https://tempmail.lol/logo.png" />
@@ -65,36 +65,40 @@
 <body>
 <nav>
     <div class="topnav" id="topnav">
-        <a href="/" class="active">TempMail.lol</a>
+        <a href="/" class="active">TempMail</a>
         <a href="/news/">News</a>
         <a href="/contact.html">Contact</a>
         <a href="/about.html">About</a>
         <a href="https://discord.gg/GHapeHPWVS">Discord</a>
         <a href="/custom.html">Custom Domains</a>
+        <a href="/pricing.html">Pricing</a>
         <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
             <i class="fa fa-bars"></i>
         </a>
     </div>
 </nav>
-<div class="mobile_warning"></div>
-<section class="header">
-    <h1>
-        TempMail.lol
-    </h1>
-</section>
-<div class="desc">
-    <h2>
-        Custom Domain Mode
-    </h2>
-    <!--stats will be populated by js-->
-    <p id="stats"></p>
+<div class="mega_header">
+    <section class="header">
+        <h1>
+            TempMail
+        </h1>
+    </section>
+    <div class="desc">
+        <h2>
+            Custom Domain Mode
+        </h2>
+        <!--stats will be populated by js-->
+        <p id="stats"></p>
+    </div>
 </div>
 <section class="email" id="phase1">
-    <h2>Have you used this website with custom domains before?</h2>
-    <button class="button" onclick="yesCustomDomains()">Yes</button>
-    <button class="button" onclick="noCustomDomains()">No</button>
-    <p>Note: public custom domains use the main website (the Community Domains switch)</p>
-    <p>If you want to remove a public domain, <a href="/contact.html">please email us</a>.</p>
+    <h2>What would you like to do?</h2>
+    <button class="button" onclick="addCommunity()" style="width: 50%;">Add a community domain</button>
+    <button class="button" onclick="addNewCustom()" style="width: 50%;">Configure or add a private custom domain</button>
+    <button class="button" onclick="useExistingCustom()" style="width: 50%;">View emails on an existing private domain</button>
+    <p>Note: adding community domains will allow anyone to create email addresses with them!</p>
+    <p>If you want to remove a public domain, simply remove the TempMail records on the domain.</p>
+    <p>Private custom domains require a <a href="/pricing.html">TempMail Plus</a> subscription.</p>
 </section>
 <section class="phase_1.9 email" id="phase1.9" hidden>
     <h1>Would you like your domain to be added to the public pool of domains?</h1>
@@ -172,37 +176,20 @@
         <iframe id="email_iframe" src=""></iframe>
     </div>
 </div>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2561999092732135"
-        crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2561999092732135"
-     data-ad-slot="6513434622"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<div>
-    <!--animation area-->
-    <ul class="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-</div>
-<br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br>
-<!--do not write content below here-->
 </body>
 <script async src="/js/topnav.js"></script>
-<script async src="/js/custom.js"></script>
+<script>
+    function useExistingCustom() {
+        location.href = "/private-custom.html";
+    }
+    
+    
+    function addCommunity() {
+        location.href = "/add-community.html";
+    }
+    
+    function addNewCustom() {
+        location.href = "/configure.html";
+    }
+</script>
 </html>

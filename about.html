@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About TempMail.lol</title>
+    <title>About TempMail</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate temporary/disposable email addresses to use for other websites!">
     <meta name="keywords" content="tempmail, TempMail, Temporary Email, generator, Temporary Email Generator">
-    <meta property="og:title" content="TempMail.lol" />
+    <meta property="og:title" content="TempMail" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tempmail.lol/" />
     <meta property="og:image" content="https://tempmail.lol/logo.png" />
@@ -50,22 +50,23 @@
 <body>
 <nav>
     <div class="topnav" id="topnav">
-        <a href="/" class="active">TempMail.lol</a>
+        <a href="/" class="active">TempMail</a>
         <a href="/news/">News</a>
         <a href="/contact.html">Contact</a>
         <a href="/about.html">About</a>
         <a href="https://discord.gg/GHapeHPWVS">Discord</a>
         <a href="/custom.html">Custom Domains</a>
+        <a href="/pricing.html">Pricing</a>
         <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
             =
         </a>
     </div>
 </nav>
-<h1>TempMail.lol</h1>
+<h1>TempMail</h1>
 <div>
     <section>
-        <h2>What is TempMail.lol?</h2>
-        TempMail.lol, otherwise known as a disposable email generator, is a website which generates disposable
+        <h2>What is TempMail?</h2>
+        TempMail, otherwise known as a disposable email generator, is a website which generates disposable
         email addresses to use on websites. A lot of websites which require you to sign up for an account to use
         certain features, require you to use an email address, and some of them require you to verify it.
     </section>
@@ -89,12 +90,16 @@
             No, our servers do not follow standard inbox protocols.  You can
             use <a href="https://tempmail.lol/news/2022/05/17/how-to-use-the-tempmail-api/">one of our libraries</a>
             to connect to the API.
+            <br>
+            This may be considered in a future release, but it is low priority.
         </p>
     </section>
     <section>
         <h2>Do you keep logs?</h2>
-        Our <a href="/privacy-policy.html">Privacy policy</a> answers this in easy-to-read English (not
-        that fancy lawyer speak).  In short: no, we do not.
+        Our <a href="/privacy-policy.html">Privacy policy</a> answers this.  We do not connect
+        inboxes to accounts, IP addresses, or user agents.  Keep in mind that most websites will
+        keep a record of the emails they send to their customers, and may include a tracking URL
+        in their emails, which uniquely identifies your email to your computer.
     </section>
     <section>
         <h2>What websites should I use this on?</h2>
@@ -107,15 +112,16 @@
     <section>
         <h2>Do the email addresses expire?</h2>
         <p>
-            Yes.  Your email address will expire after one hour.<br>
+            Yes.  Your email address will expire after a hard limit of one hour.<br>
             After that hour, the address will no longer receive emails.<br>
-            Note that if you do not connect to our servers (as in not have the website open) within 10 minutes, your email will expire.
+            Note that if you do not connect to our servers (as in not having the website open) within 10 minutes, your email will expire (soft limit).<br><br>
+            If you have <a href="/pricing.html">TempMail Plus</a>, the hard limit is raised to <u>ten hours</u>.
         </p>
     </section>
     <section>
         <h2>Why are the names of the websites for emails strange?</h2>
         <p>
-            A few reasons.  One, I like collecting domains.  Two, it helps avoid websites blocking TempMail.lol email addresses
+            This helps avoid websites blocking TempMail email addresses
             from being used, and signing up for a website with "temp email" in the link could trigger filters to block TempMail.
         </p>
     </section>

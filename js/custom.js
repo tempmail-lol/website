@@ -16,8 +16,12 @@ if(emails && emails.length && emails.length > 0) {
 }
 
 function clearLS() {
+    if(!confirm("Are you sure?  The emails on your device will be deleted, and you will be logged out."))
+        return;
+    //clear email field
+    document.getElementById("email_field").value = "";
+    localStorage.removeItem("emails");
     localStorage.removeItem("domain");
-    localStorage.removeItem("c_token");
     location.reload();
 }
 
@@ -34,6 +38,13 @@ function startInterval() {
             },
         }).then(res => res.json()).then(data => {
             console.log(data);
+            
+            if(data.error) {
+                const l = confirm(`Error from server: ${data.error}.  Would you like to login again?`);
+                if(l) {
+                    clearLS();
+                }
+            }
             
             //if there are new emails
             if(data.email instanceof Array && data.email.length > 0) {
@@ -78,16 +89,21 @@ setInterval(() => {
     periods = Math.max(1, (periods + 1) % 4);
 }, 1000);
 
-
-function yesCustomDomains() {
-    //prompt for the domain and token
-    const domain = prompt("Enter your domain name");
-    const token = prompt("Enter the token we gave you before (note: we will NOT alert you if it is invalid)");
-    const account_id = prompt("Enter your 24-number BananaCrumbs Account ID");
-    const mfa_token = prompt("Enter your 32-character MFA Token");
+function submit_data() {
+    const domain = document.getElementById("cd_domain").value;
+    const key = document.getElementById("cd_key").value;
+    const bc_id = document.getElementById("cd_id").value;
+    const mfa = document.getElementById("cd_mfa").value;
     
-    //if the user didn't cancel
+    yesCustomDomains(domain, key, bc_id, mfa);
+}
+
+function yesCustomDomains(domain, token, account_id, mfa_token) {
+    
     if(domain && token && account_id && mfa_token) {
+        
+        if(account_id.length !== 24) return alert("The BananaCrumbs Account ID should be 24 numbers");
+        
         //save the domain and token
         localStorage.setItem("domain", domain);
         localStorage.setItem("c_token", token);
@@ -152,10 +168,8 @@ async function opt19Private() {
 }
 
 if(localStorage.getItem("domain")) {
-    document.getElementById("phase1").hidden = true;
-    document.getElementById("phase2").hidden = true;
-    document.getElementById("phase3").hidden = false;
-    document.getElementById("email_set").hidden = false;
+    document.getElementById("waiting_login").hidden = true;
+    document.getElementById("waiting").hidden = false;
     
     address = localStorage.getItem("domain");
     token = localStorage.getItem("c_token");
@@ -181,22 +195,6 @@ function updateStatsElement(emails, clients, text = "We've processed {emails} em
     const stats = document.getElementById("stats");
     stats.innerText = text.replace("{emails}", emails).replace("{clients}", clients);
 }
-
-//fetch stats
-setInterval(() => {
-    fetch("https://api.tempmail.lol/stats").then(res => res.json()).then((data) => {
-        console.log(data);
-        updateStatsElement(data.emails_received, data.clients_connected);
-    });
-}, 5000);
-
-fetch("https://api.tempmail.lol/stats").then(res => res.json()).then((data) => {
-    console.log(data);
-    updateStatsElement(data.emails_received, data.clients_connected);
-});
-
-updateStatsElement(0, 0, "Loading...");
-
 
 /**
  * Format the given unix timestamp to a human-readable date
@@ -276,10 +274,6 @@ function openEmailModal(from, to, subject, body, html, date) {
     document.getElementById("email_modal").style.display = "block";
     document.getElementById("modal_subject").innerText = subject;
 }
-
-document.getElementById("modal_close").onclick = () => {
-    document.getElementById("email_modal").style.display = "none";
-};
 
 //whenever outside the modal is clicked, close the modal
 window.onclick = (event) => {

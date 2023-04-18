@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TempMail - A temporary email address generator</title>
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate temporary/disposable email addresses to use for other websites!">
     <meta name="keywords" content="tempmail, TempMail, Temporary Email, generator, Temporary Email Generator">
@@ -13,9 +13,9 @@
     <meta property="og:image" content="https://tempmail.lol/logo.png" />
     <meta property="og:description" content="Generate temporary email addresses to reduce spam!" />
     <meta property="og:site_name" content="TempMail.lol" />
-    
+
     <meta name="apple-itunes-app" content="app-id=1632857148">
-    
+
     <!--twitter stuff -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@tempmail_lol">
@@ -23,24 +23,23 @@
     <meta name="twitter:description" content="Generate temporary email addresses to reduce spam!">
     <meta name="twitter:creator" content="@tempmail_lol">
     <meta name="twitter:image" content="https://tempmail.lol/logo.png">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/topnav.css">
     <link rel="stylesheet" href="/css/topsec.css">
-    <link rel="stylesheet" href="/css/inbox.css">
     <link rel="stylesheet" href="/css/bottomsec.css">
     <link rel="stylesheet" href="/css/emailmodal.css">
     <link rel="stylesheet" href="/css/ads.css">
     <link rel="stylesheet" href="/css/switch.css">
-    
+
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8RPSFRNYH"></script>
     <script>
@@ -60,28 +59,44 @@
         
         gtag('config', 'UA-228143924-1');
     </script>
-    <script>
-        function onRushSwitch() {
-            const checked = document.getElementById("rush_mode").checked;
-            if(checked) {
-                localStorage.setItem("rush_mode", "true");
-            } else {
-                localStorage.setItem("rush_mode", "false");
-            }
-            localStorage.removeItem("emails");
-            localStorage.removeItem("address");
-            localStorage.removeItem("token");
-            localStorage.removeItem("creation_time");
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-right: auto;
+            margin-left: auto;
+            table-layout: fixed;
+            margin-top: 30px;
+            word-break: break-all;
+            border: 1.5px solid #ffffff;
         }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2561999092732135"
-            crossorigin="anonymous"></script>
+
+        td, th {
+            border: 1.5px solid #ffffff;
+            padding: 8px;
+        }
+        
+        .extratoppadding {
+            margin-top: 100vh;
+        }
+        
+        /*mobile*/
+        @media only screen and (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+        }
+        
+        #dm_mx_r {
+            color: wheat;
+        }
+        
+        #dm_mx_sd {
+            color: wheat;
+        }
+    </style>
 </head>
 <body>
-
 <div class="mega_header">
     <nav>
         <div class="topnav" id="topnav">
@@ -97,80 +112,43 @@
             </a>
         </div>
     </nav>
-    <section class="header">
-        <h1>
-            TempMail
-        </h1>
-    </section>
     <div class="desc">
-        <!--stats will be populated by js-->
-        <p id="stats"></p>
-        <p>
-            Say goodbye to spam!  Generate temporary email addresses to use for other websites without giving away your real email address.
-        </p>
-    </div>
-    <section class="email">
-        <div id="ab" style="display: none">
+        <h1>Add Community Domains</h1>
+        <h2>Add community domains to help bypass TempMail detection.</h2>
+        <p>Note that users will be able to generate emails on your domain.</p>
+        <label for="domain">Enter your domain:</label>
+        <input type="text" id="domain">
+        <div id="records" hidden>
+            <p>Please add the following two records to your domain</p>
+            <table>
+                <tr>
+                    <th>Record Type</th>
+                    <th>Name</th>
+                    <th>Content</th>
+                    <th>TTL</th>
+                    <th>Priority</th>
+                </tr>
+                <tr>
+                    <td>MX</td>
+                    <td id="dm_mx_r"></td>
+                    <td id="dm_mx_sd"></td>
+                    <td>one minute</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>MX</td>
+                    <td>129.146.248.147</td>
+                    <td>one minute</td>
+                    <td>N/A</td>
+                </tr>
+            </table>
+            <p>Note that it may take up to 48 hours for your registrar to update its records.</p>
+            <button class="button" onclick="submit_community()">Submit</button>
         </div>
-    <!--    <h3><a href="https://forms.gle/AFV1Fi6b4FqKLwes5">What do you use TempMail for?  Tell us in this survey!</a></h3>-->
-        <h2>
-        </h2>
-        <input type="text" id="email_field" class="email_field" readonly>
-        <section class="">
-            <label for="rush_mode"><h3>Enable <a href="javascript:ca_info()">community addresses</a></h3></label>
-            <label class="switch">
-                <input type="checkbox" id="rush_mode" onclick="onRushSwitch()">
-                <span class="slider round"></span>
-                <script>
-                    const rush_mode = localStorage.getItem("rush_mode");
-                    if(rush_mode === "true") {
-                        document.getElementById("rush_mode").checked = true;
-                    }
-                </script>
-            </label>
-        </section>
-    </section>
-</div>
-<section class="email_buttons">
-    <button id="copy_button" class="button" onclick="copyToClipboard()">Copy</button>
-    <button id="regenerate_button" class="button" onclick="regenerate()">Reset</button>
-</section>
-<section class="inbox_container">
-    <table class="inbox" id="inbox_table">
-        <tr>
-            <th>From</th>
-            <th>Date Sent</th>
-            <th>Subject</th>
-        </tr>
-    </table>
-    <div class="waiting_container">
-        <h1 id="waiting">Waiting for emails</h1>
-    </div>
-    <div class="click_prompt" id="click_prompt">
-        <h1>Click to open an email.</h1>
-    </div>
-    <br>
-</section>
-<div id="email_modal" class="modal">
-    <div class="modal-content">
-        <h2 class="modal_subject_header">Subject:&nbsp;&nbsp;</h2>
-        <h2 id="modal_subject" class="modal_subject"></h2>
-        <span id="modal_close" class="close">&times;</span>
-        <iframe id="email_iframe" src=""></iframe>
     </div>
 </div>
-<section class="about_ee">
-    <h1>What is TempMail?</h1>
-    <p>
-        TempMail is a temporary email address generator.  It generates temporary email addresses to use for other websites without giving away your real email address.
-        TempMail is also known as 10minutemail, fake email, burner email, and throwaway email.  Free Wi-Fi, forum owners, and websites require that
-        you signup with an email address before allowing you to access content.
-        <br><br>
-        Want to learn more?  Check out our <a href="/about.html">about</a> page and our <a href="/news/">blog page</a>.
-        <br><br>
-    </p>
-</section>
-<div class="mega_header center foot">
+<div class="mega_header center foot extratoppadding">
     <p>
         By using this site, you agree to the <a href="/privacy-policy.html">Privacy policy</a> and <a href="/terms-of-use.html">Terms of Use</a>.
     </p>
@@ -183,13 +161,50 @@
         <a href="/pricing.html">TempMail Plus</a>
     </p>
     <hr>
-    <p property="dc:rights">Copyright &copy;
+    <p property="dc:rights">Copyright &copy; 
         <span property="dc:dateCopyrighted">2023</span>
         <span property="dc:publisher">BananaCrumbs, LLC.</span>
         All Right Reserved.
     </p>
 </div>
 </body>
-<script src="/js/topnav.js"></script>
-<script src="/js/index.js"></script>
+<script async src="/js/topnav.js"></script>
+<script>
+    
+    function c() {
+        const dm = document.getElementById("domain").value;
+        document.getElementById("records").hidden = false;
+        console.log(`dm: ${dm}`);
+        
+        document.getElementById("dm_mx_r").innerText = dm;
+        document.getElementById("dm_mx_sd").innerText = `mx.${dm}`;
+    }
+    
+    document.getElementById("domain").onchange = () => c();
+    document.getElementById("domain").onpaste = () => c();
+    document.getElementById("domain").oninput = () => c();
+    
+    
+    function submit_community() {
+        const dm = document.getElementById("domain").value;
+        const url = `https://api.tempmail.lol/addpublic/${dm}`;
+        console.log(`url: ${url}`);
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "domain": dm
+            })
+        }).then(response => {
+            console.log(response);
+            if (response.status === 200) {
+                alert("Your domain has been added to the community list. It may take up to 48 hours for your domain to be added.");
+            } else {
+                alert("An error occurred while adding your domain to the community list. Please try again later.");
+            }
+        });
+    }
+</script>
 </html>

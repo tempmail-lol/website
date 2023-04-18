@@ -1,6 +1,10 @@
 
 a {
-    color: wheat;
+    color: black;
+}
+
+.details {
+    margin-left: 50px;
 }
 
 h3 {

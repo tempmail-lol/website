@@ -3,6 +3,14 @@ html {
     margin-left: 5px;
 }
 
+body {
+    background-color: #0D1117;
+}
+
+a {
+    color: wheat;
+}
+
 .pricing_section {
     text-align: center;
     position: relative;

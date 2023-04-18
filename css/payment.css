@@ -1,0 +1,21 @@
+
+.payment_methods_container {
+    background-color: #88888855;
+    max-width: 50%;
+    margin-left: 25%;
+    text-align: center;
+    align-content: center;
+}
+
+.menu {
+    align-content: center;
+    text-align: center;
+}
+
+.menu_closed {
+    height: 0;
+}
+
+.menu_opened {
+    height: 100%;
+}

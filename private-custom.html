@@ -31,13 +31,12 @@
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/topnav.css">
     <link rel="stylesheet" href="/css/topsec.css">
-    <link rel="stylesheet" href="/css/circles.css">
+    <link rel="stylesheet" href="/css/inbox.css">
     <link rel="stylesheet" href="/css/bottomsec.css">
     <link rel="stylesheet" href="/css/emailmodal.css">
     <link rel="stylesheet" href="/css/ads.css">
     <link rel="stylesheet" href="/css/switch.css">
-    <link rel="stylesheet" href="/css/pricing.css">
-    <link rel="stylesheet" href="/css/payment.css">
+    <link rel="stylesheet" href="/css/privatecustom.css">
     
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
     
@@ -62,19 +61,77 @@
         
         gtag('config', 'UA-228143924-1');
     </script>
-<!--    <meta http-equiv="Refresh" content="7; url='https://buy.stripe.com/aEUdRy6bz6gC0BW5kl'">-->
 </head>
 <body>
-<div class="menu">
-    <h1 class="header">Add TempMail Plus Time</h1>
-    <p class="header">By purchasing TempMail Plus, you agree to the
-        <a href="terms-of-use.html">Terms of Use</a> and
-        <a href="https://bananacrumbs.us/terms-of-service.html">Terms of Service</a>.
-    </p>
-    <div class="payment_methods_container" onclick="">
-        <h1>Payment Methods</h1>
-        <div class="payment_methods">
-            
+<div class="mega_header">
+    <nav>
+        <div class="topnav" id="topnav">
+            <a href="/" class="active">TempMail</a>
+            <a href="/news/">News</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/about.html">About</a>
+            <a href="https://discord.gg/GHapeHPWVS">Discord Server</a>
+            <a href="/custom.html">Custom Domains</a>
+            <a href="/pricing.html">Pricing</a>
+            <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </nav>
+    <h1 class="header">Custom Domains</h1>
+    <div class="desc">
+        <p>Note: using private custom domains requires a <a href="/pricing.html">TempMail Plus</a> subscription.</p>
+        <h2>Enter your domain information to get started</h2>
+    </div>
+    <div class="data">
+        <label for="cd_domain">Domain name (such as example.com)</label>
+        <br>
+        <input id="cd_domain" type="text">
+        <br><br>
+        <label for="cd_key">Your token (created by us when the domain is configured)</label>
+        <br>
+        <input id="cd_key" type="text">
+        <br><br>
+        <label for="cd_id">Your BananaCrumbs ID (24 numbers)</label>
+        <br>
+        <input id="cd_id" type="number">
+        <br><br>
+        <label for="cd_mfa">Your BananaCrumbs Token (32 letters/numbers)</label>
+        <br>
+        <input id="cd_mfa" type="text">
+        <br><br>
+        <input type="text" id="email_field" class="email_field" readonly>
+        <br><br>
+    </div>
+</div>
+<section class="email_buttons">
+    <button class="button" onclick="submit_data()">Submit</button>
+    <button class="button" onclick="clearLS()">Reset</button>
+</section>
+<div class="email_area_custom">
+    <section class="inbox_container" id="phase3">
+        <table class="inbox" id="inbox_table">
+            <tr>
+                <th>From</th>
+                <th>Date Sent</th>
+                <th>To</th>
+                <th>Subject</th>
+            </tr>
+        </table>
+        <div class="waiting_container">
+            <h1 id="waiting_login">Waiting for login</h1>
+            <h1 id="waiting" hidden>Waiting for emails</h1>
+        </div>
+        <div class="click_prompt" id="click_prompt">
+            <h1>Click to open email.</h1>
+        </div>
+    </section>
+    <div id="email_modal" class="modal">
+        <div class="modal-content">
+            <h2 class="modal_subject_header">Subject:&nbsp;&nbsp;</h2>
+            <h2 id="modal_subject" class="modal_subject"></h2>
+            <span id="modal_close" class="close">&times;</span>
+            <iframe id="email_iframe" src=""></iframe>
         </div>
     </div>
 </div>
@@ -97,5 +154,12 @@
         All Right Reserved.
     </p>
 </div>
+<script src="/js/custom.js"></script>
+<script>
+    document.getElementById("modal_close").onclick = () => {
+        document.getElementById("email_modal").style.display = "none";
+    };
+</script>
 </body>
+<script async src="/js/topnav.js"></script>
 </html>

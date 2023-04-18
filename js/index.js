@@ -232,6 +232,9 @@ window.onclick = (event) => {
     }
 }
 
+let copy_count = 0;
+
+let copy_timeout;
 
 function copyToClipboard() {
     const ef = document.getElementById("email_field");
@@ -243,7 +246,17 @@ function copyToClipboard() {
         //change the text to "copied" with a checkmark unicode
         copy_button.innerHTML = "&#x2713; Copied!";
         
-        setTimeout(() => {
+        copy_count++;
+        
+        if(copy_count >= 30) {
+            //redirect
+            alert("You have peeked into the abyss of the copy button, and now the copy button is staring back at you...");
+            location.href = "https://tempmail.lol/egg.html";
+        }
+        
+        if(copy_timeout) clearInterval(copy_timeout);
+        
+        copy_timeout = setTimeout(() => {
             copy_button.innerHTML = "Copy";
         }, 3000);
     }).catch(err => {
@@ -278,5 +291,6 @@ function topnav_resize() {
 function ca_info() {
     alert("Community addresses use domains people have given to the website (such as @example.com).\n\nThis can help to avoid TempMail detection on some" +
         " websites; however, please be aware that the original domain owner can see all emails from expired inboxes, should it be removed from the website.\n\n" +
-        "If you have your own domain and would like to allow people to use it for temporary email addresses, please add it here: https://tempmail.lol/custom.html#p19");
+        "If you have your own domain and would like to allow people to use it for temporary email addresses, please add it here: https://tempmail.lol/custom.html\n\n" +
+        "Note that community email addresses can be used by the original domain owner.  Do not use these addresses for anything sensitive.");
 }

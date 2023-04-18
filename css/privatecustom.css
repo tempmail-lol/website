@@ -1,0 +1,12 @@
+
+.data label {
+    margin-top: 15px;
+}
+
+.data {
+    text-align: center;
+}
+
+.email_area_custom {
+    min-height: 50vh;
+}

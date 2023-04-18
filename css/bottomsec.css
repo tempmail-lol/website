@@ -12,4 +12,13 @@
 .about_ee {
     text-align: center;
     margin-top: 200px;
+    width: 60%;
+    margin-left: 20%;
+}
+
+@media screen and (max-width: 800px) {
+    .about_ee {
+        width: 95%;
+        margin-left: 2.5%;
+    }
 }

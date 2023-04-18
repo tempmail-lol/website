@@ -1,7 +1,7 @@
 
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #0e1117;
+    background-color: #294d73;
     overflow: hidden;
 }
 
@@ -24,13 +24,16 @@
 
 /* Add an active class to highlight the current page */
 .topnav a.active {
-    background-color: #00fff5;
-    color: black;
+    font-weight: bolder;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .icon {
     display: none;
+}
+
+.image {
+    height: 0.8em;
 }
 
 /*mobile topnav*/

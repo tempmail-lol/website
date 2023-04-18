@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TempMail.lol - A temporary email address generator</title>
+    <title>Configure Private Domain</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate temporary/disposable email addresses to use for other websites!">
     <meta name="keywords" content="tempmail, TempMail, Temporary Email, generator, Temporary Email Generator">
     <meta property="og:title" content="TempMail" />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tempmail.lol/" />
+    <meta property="og:url" content="https://tempmail.lol/custom.html" />
     <meta property="og:image" content="https://tempmail.lol/logo.png" />
     <meta property="og:description" content="Generate temporary email addresses to reduce spam!" />
     <meta property="og:site_name" content="TempMail.lol" />
@@ -36,8 +36,6 @@
     <link rel="stylesheet" href="/css/emailmodal.css">
     <link rel="stylesheet" href="/css/ads.css">
     <link rel="stylesheet" href="/css/switch.css">
-    <link rel="stylesheet" href="/css/pricing.css">
-    <link rel="stylesheet" href="/css/payment.css">
     
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
     
@@ -62,23 +60,97 @@
         
         gtag('config', 'UA-228143924-1');
     </script>
-<!--    <meta http-equiv="Refresh" content="7; url='https://buy.stripe.com/aEUdRy6bz6gC0BW5kl'">-->
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-right: auto;
+            margin-left: auto;
+            table-layout: fixed;
+            margin-top: 30px;
+            word-break: break-all;
+            border: 1.5px solid #ffffff;
+        }
+        
+        td, th {
+            border: 1.5px solid #ffffff;
+            padding: 8px;
+        }
+        
+        .extratoppadding {
+            margin-top: 100vh;
+        }
+        
+        /*mobile*/
+        @media only screen and (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+        }
+        
+        #dm_mx_r {
+            color: wheat;
+        }
+        
+        #dm_mx_sd {
+            color: wheat;
+        }
+    </style>
 </head>
 <body>
-<div class="menu">
-    <h1 class="header">Add TempMail Plus Time</h1>
-    <p class="header">By purchasing TempMail Plus, you agree to the
-        <a href="terms-of-use.html">Terms of Use</a> and
-        <a href="https://bananacrumbs.us/terms-of-service.html">Terms of Service</a>.
-    </p>
-    <div class="payment_methods_container" onclick="">
-        <h1>Payment Methods</h1>
-        <div class="payment_methods">
-            
+
+<div class="mega_header">
+    <nav>
+        <div class="topnav" id="topnav">
+            <a href="/" class="active">TempMail</a>
+            <a href="/news/">News</a>
+            <a href="/contact.html">Contact</a>
+            <a href="/about.html">About</a>
+            <a href="https://discord.gg/GHapeHPWVS">Discord Server</a>
+            <a href="/custom.html">Custom Domains</a>
+            <a href="/pricing.html">Pricing</a>
+            <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+    </nav>
+    <div class="desc">
+        <h1>Configure Private Domain</h1>
+        <h2>You will need <a href="/pricing.html">TempMail Plus</a> to use private domains</h2>
+        <div id="records">
+            <p>Please add the following two records to your domain</p>
+            <table>
+                <tr>
+                    <th>Record Type</th>
+                    <th>Name</th>
+                    <th>Content</th>
+                    <th>TTL</th>
+                    <th>Priority</th>
+                </tr>
+                <tr>
+                    <td>TXT</td>
+                    <td>_tmpml</td>
+                    <td id="dm_txt_sha"></td>
+                    <td>one minute</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>MX</td>
+                    <td>@</td>
+                    <td>mx.exploding.email</td>
+                    <td>one minute</td>
+                    <td>N/A</td>
+                </tr>
+            </table>
+            <p>Note that it may take up to 48 hours for your registrar to update its records.</p>
+            <p><b>Save this token on your computer, you will need it to access your emails</b>:</p>
+            <code id="savekey"></code>
+            <p>If you lose the token, visit this page to change your domain records.</p>
+            <p>After adding these records, check your custom domain emails at <a href="/custom.html">this page</a>.</p>
         </div>
     </div>
 </div>
-<div class="mega_header center foot">
+<div class="mega_header center foot extratoppadding">
     <p>
         By using this site, you agree to the <a href="/privacy-policy.html">Privacy policy</a> and <a href="/terms-of-use.html">Terms of Use</a>.
     </p>
@@ -98,4 +170,19 @@
     </p>
 </div>
 </body>
+<script src="/js/custom.js"></script>
+<script>
+    document.getElementById("savekey").innerText = "loading...";
+    document.getElementById("dm_txt_sha").innerText = "loading...";
+    
+    setTimeout(async () => {
+        const str = randomBase64UrlString();
+        let strSHA512 = (await sha512(str));
+        //convert to hex
+        strSHA512 = Array.from(new Uint8Array(strSHA512)).map(b => b.toString(16).padStart(2, "0")).join("");
+        
+        document.getElementById("dm_txt_sha").innerText = (strSHA512);
+        document.getElementById("savekey").innerText = str;
+    }, 1000);
+</script>
 </html>

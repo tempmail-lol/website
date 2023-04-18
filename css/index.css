@@ -9,13 +9,32 @@ html::-webkit-scrollbar {
 }
 
 a {
-    color: wheat;
+    color: #0D1117;
 }
 
 body {
     font-family: "Ubuntu",serif;
-    background-color: #0D1117;
+    background-color: #f6f7f9;
+    color: black;
+    margin: 0;
+}
+
+.mega_header {
+    background-color: #22222b;
+    margin: 0;
+    padding: 0 0 10px;
     color: white;
+}
+
+.mega_header a {
+    color: wheat;
+}
+
+.email_buttons {
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(26, 27, 33, 0.18);
+    padding-bottom: 10px;
 }
 
 .mobile_warning {
@@ -25,6 +44,29 @@ body {
 
 .cookies {
     text-align: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.foot {
+    padding-top: 50px;
+}
+
+.foot hr {
+    width: 50%;
+}
+
+.promos a {
+    font-size: small;
+    color: #f2f2f2;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.nomargin {
+    margin: 0;
 }
 
 @media screen and (max-width: 800px) {
