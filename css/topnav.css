@@ -36,6 +36,10 @@
     height: 0.8em;
 }
 
+.tn_login {
+    text-align: right;
+}
+
 /*mobile topnav*/
 @media screen and (max-width: 800px) {
     .topnav a:not(:first-child) {
