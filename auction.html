@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TempMail - A temporary email address generator</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate temporary/disposable email addresses to use for other websites!">
+    <meta name="keywords" content="tempmail, TempMail, Temporary Email, generator, Temporary Email Generator">
+    <meta property="og:title" content="TempMail" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tempmail.lol/custom.html" />
+    <meta property="og:image" content="https://tempmail.lol/logo.png" />
+    <meta property="og:description" content="Generate temporary email addresses to reduce spam!" />
+    <meta property="og:site_name" content="TempMail.lol" />
+
+    <meta name="apple-itunes-app" content="app-id=1632857148">
+
+    <!--twitter stuff -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@tempmail_lol">
+    <meta name="twitter:title" content="TempMail.lol">
+    <meta name="twitter:description" content="Generate temporary email addresses to reduce spam!">
+    <meta name="twitter:creator" content="@tempmail_lol">
+    <meta name="twitter:image" content="https://tempmail.lol/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/topnav.css">
+    <link rel="stylesheet" href="/css/topsec.css">
+    <link rel="stylesheet" href="/css/inbox.css">
+    <link rel="stylesheet" href="/css/circles.css">
+    <link rel="stylesheet" href="/css/bottomsec.css">
+    <link rel="stylesheet" href="/css/ads.css">
+    <link rel="stylesheet" href="/css/switch.css">
+
+    <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8RPSFRNYH"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-J8RPSFRNYH');
+    </script>
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-228143924-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'UA-228143924-1');
+    </script>
+    <style>
+        .slightly_bigger_text {
+            font-size: 24px;
+            max-width: 50%;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="topnav" id="topnav">
+        <a href="/" class="active">TempMail</a>
+        <a href="/news/">News</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/about.html">About</a>
+        <a href="https://discord.gg/GHapeHPWVS">Discord Server</a>
+        <a href="/custom.html">Custom Domains</a>
+        <a href="/pricing.html">Pricing</a>
+        <a href="/auction.html">Auction</a>
+        <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+</nav>
+<div class="mega_header">
+    <section class="header">
+        <h1>
+            TempMail
+        </h1>
+    </section>
+    <div class="desc">
+        <h2>Used Domains Auction</h2>
+        <!--stats will be populated by js-->
+        <p id="stats"></p>
+    </div>
+</div>
+<br>
+<section class="center">
+    <p>Please note that all the domains listed were used for generating temporary email addresses.</p>
+    <p>All of the domains listed may receive more spam than a normal domain.</p>
+    <p>These domains may also be on several anti-tempmail blacklists.</p>
+    
+    <h1>We currently have the following domains for sale:</h1>
+    
+    <table>
+        <tr>
+            <th>Domain</th>
+            <th>Starting Bid</th>
+            <th>Current Bid</th>
+            <th>Bid Ends</th>
+        </tr>
+        <tr>
+            <td>cringemonster.com</td>
+            <td>$40</td>
+            <td>N/A</td>
+            <td>August 1st, 2023 00:00 MST</td>
+        </tr>
+        <tr>
+            <td>inactivemachine.com</td>
+            <td>$40</td>
+            <td>N/A</td>
+            <td>August 1st, 2023 00:00 MST</td>
+        </tr>
+    </table>
+    <br>
+    <button class="button" onclick="bidClick();">Bid Now</button>
+</section>
+<section id="auction_info" class="center" hidden>
+    <p>
+        Please email your bid to <a href="mailto:bid@bananacrumbs.us">bid@bananacrumbs.us</a>.<br>
+        Please include your bidding price and the domain you want to bid on in your email.<br>
+        By bidding, you acknowledge the <a href="/auctions-terms-of-service.html">Auctions Terms of Service</a>.
+    </p>
+</section>
+<div id="email_modal" class="modal">
+    <div class="modal-content">
+        <h2 class="modal_subject_header"></h2>
+        <h2 id="modal_subject" class="modal_subject"></h2>
+        <span id="modal_close" class="close">&times;</span>
+        <iframe id="email_iframe" src=""></iframe>
+    </div>
+</div>
+<div class="mega_header center foot">
+    <p>
+        By using this site, you agree to the <a href="/privacy-policy.html">Privacy policy</a> and <a href="/terms-of-use.html">Terms of Use</a>.
+    </p>
+    <hr>
+    <p class="promos">
+        <a href="https://api.tempmail.lol/">Developer API</a> |
+        <a href="https://discord.gg/GHapeHPWVS">Discord Server</a> |
+        <a href="mailto:contact@bananacrumbs.us">Email</a> |
+        <a href="https://bananacrumbs.us/pubkey.txt">GPG Key</a> |
+        <a href="/pricing.html">TempMail Plus</a>
+    </p>
+    <hr>
+    <p property="dc:rights">Copyright &copy;
+        <span property="dc:dateCopyrighted">2023</span>
+        <span property="dc:publisher">BananaCrumbs, LLC.</span>
+        All Right Reserved.
+    </p>
+</div>
+</body>
+<script async src="/js/topnav.js"></script>
+<script async src="/js/index.js"></script>
+<script async src="/js/menus.js"></script>
+<script>
+    setInterval(() => {
+        if(localStorage.getItem("auction") === "agree") {
+            document.getElementById('email_modal').style.display = 'none';
+            document.getElementById('auction_info').hidden = false;
+            localStorage.removeItem("auction");
+        }
+    }, 50);
+</script>
+<script>
+    async function bidClick() {
+        const html = await (await fetch("/auctions-terms-of-service.html")).text();
+        
+        openEmailModal("", "", "", "", html, 0);
+    }
+</script>
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        text-align: center;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content/Box */
+    .modal-content {
+        background-color: #fefefe;
+        border: 1px solid #888;
+        width: 100%; /* Could be more or less, depending on screen size */
+        height: 100%;
+    }
+</style>
+</html>

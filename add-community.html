@@ -97,6 +97,7 @@
             <a href="https://discord.gg/GHapeHPWVS">Discord Server</a>
             <a href="/custom.html">Custom Domains</a>
             <a href="/pricing.html">Pricing</a>
+            <a href="/auction.html">Auction</a>
             <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
                 <i class="fa fa-bars"></i>
             </a>
@@ -179,18 +180,10 @@
         const dm = document.getElementById("domain").value;
         const url = `https://api.tempmail.lol/addpublic/${dm}`;
         console.log(`url: ${url}`);
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                "domain": dm
-            })
-        }).then(response => {
+        fetch(url).then(response => {
             console.log(response);
             if (response.status === 200) {
-                alert("Your domain has been added to the community list. It may take up to 48 hours for your domain to be added.");
+                alert("Your domain has been added to the community list.  Its records will be checked periodically to ensure they are correct.");
             } else {
                 alert("An error occurred while adding your domain to the community list. Please try again later.");
             }
