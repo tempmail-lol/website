@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>TempMail - A temporary email address generator</title>
-
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Generate temporary/disposable email addresses to use for other websites!">
     <meta name="keywords" content="tempmail, TempMail, Temporary Email, generator, Temporary Email Generator">
@@ -13,9 +13,9 @@
     <meta property="og:image" content="https://tempmail.lol/logo.png" />
     <meta property="og:description" content="Generate temporary email addresses to reduce spam!" />
     <meta property="og:site_name" content="TempMail.lol" />
-
+    
     <meta name="apple-itunes-app" content="app-id=1632857148">
-
+    
     <!--twitter stuff -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@tempmail_lol">
@@ -23,11 +23,11 @@
     <meta name="twitter:description" content="Generate temporary email addresses to reduce spam!">
     <meta name="twitter:creator" content="@tempmail_lol">
     <meta name="twitter:image" content="https://tempmail.lol/logo.png">
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/topnav.css">
     <link rel="stylesheet" href="/css/topsec.css">
@@ -36,11 +36,11 @@
     <link rel="stylesheet" href="/css/bottomsec.css">
     <link rel="stylesheet" href="/css/ads.css">
     <link rel="stylesheet" href="/css/switch.css">
-
+    
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-J8RPSFRNYH"></script>
     <script>
@@ -98,41 +98,67 @@
 </div>
 <br>
 <section class="center">
-    <p>Please note that all the domains listed were used for generating temporary email addresses.</p>
-    <p>All of the domains listed may receive more spam than a normal domain.</p>
-    <p>These domains may also be on several anti-tempmail blacklists.</p>
-    
-    <h1>We currently have the following domains for sale:</h1>
-    
+    <h1>Advertise With Us!</h1>
+    <p>Want to advertise with us?  Now you can!  Advertisements will appear on the front page of our website.</p>
+    <p>We do have some rules, so please look before you make an advertisement:</p>
+    <p>
+        Advertisements <b>may not</b>:
+        <br>- Advertise competing websites
+        <br>- Promote the sale of illegal goods/services
+        <br>- Show adult content
+        <br>- Infringe upon copyright
+        <br>- Anything else that's illegal
+    </p>
+    <p>
+        If your ad isn't approved, we'll let you know why!<br>
+        If a bid is made and the buyer does not pay, the second-highest bid will be accepted instead.<br>
+        Failure to pay the first winning bid will result in a permanent ban from advertising on our services.<br>
+        <br>
+    </p>
+    <h2>How it works</h2>
+    <p>
+        At the time listed on the "Bid ends" column in the table below, the first place winner will have 24 hours (UTC time)
+        to pay for the advertisement.<br>If that person does not pay, the second place winner will have 24 hours AFTER
+        the first place winner's time is up to pay for their advertisement.
+    </p>
+    <p>Bids end Sunday at 11:59 PM UTC time.  The advertisement will go live the following Wednesday at 11:59 PM UTC</p>
+    <p>We accept both Credit/Debit (through Stripe) and Cryptocurrency (through Coinbase) for payment.</p>
+    <p>Bid prices are updated every time a new bid is processed (you will receive an email once your bid has been processed).</p>
+    <h2>Specifications</h2>
+    <p>You can have HTML on your advertisement.  It can't include scripts, flashing colors, or anything that messes with the site, but you can animate it.</p>
+    <p>Ads will be at most 800px wide, and will be shrunk depending on the device screen width.</p>
+    <p>Ads are 128px tall and will have a black border around them.</p>
     <table>
         <tr>
-            <th>Domain</th>
-            <th>Starting Bid</th>
-            <th>Current Bid</th>
-            <th>Bid Ends</th>
+            <th>Bid starts</th>
+            <th>Bid ends</th>
+            <th>Current bid</th>
+            <th>Second highest bid</th>
         </tr>
         <tr>
-            <td>cringemonster.com</td>
-            <td>$40</td>
-            <td>N/A</td>
-            <td>September 1st, 2023 00:00 MST</td>
+            <td>August 13th 2023</td>
+            <td>August 20th 2023</td>
+            <td>None</td>
+            <td>None</td>
         </tr>
         <tr>
-            <td>inactivemachine.com</td>
-            <td>$40</td>
-            <td>N/A</td>
-            <td>September 1st, 2023 00:00 MST</td>
+            <td>August 20th 2023</td>
+            <td>August 27th 2023</td>
+            <td>None</td>
+            <td>None</td>
         </tr>
     </table>
-    <br>
     <button class="button" onclick="bidClick();">Bid Now</button>
 </section>
 <section id="auction_info" class="center" hidden>
     <p>
-        Please email your bid to <a href="mailto:bid@bananacrumbs.us">bid@bananacrumbs.us</a>.<br>
-        Please include your bidding price and the domain you want to bid on in your email.<br>
-        By bidding, you acknowledge the <a href="/auctions-terms-of-service.html">Auctions Terms of Service</a>.
+        Please email your bid to <a href="mailto:ads@bananacrumbs.us">ads@bananacrumbs.us</a>.<br>
+        Please include your bidding price and an attachment (HTML) of your advertisement.<br>
+        <b>Make sure your HTML is correct</b>.  Once approved, you will have to make a new bid to
+        change your advertisement.<br>
+        Example ad:
     </p>
+    <img src="ad_example.png" alt="code for the auction page">
 </section>
 <div id="email_modal" class="modal">
     <div class="modal-content">
@@ -176,9 +202,26 @@
 </script>
 <script>
     async function bidClick() {
-        const html = await (await fetch("/auctions-terms-of-service.html")).text();
+        const res = prompt("Hey!  Just letting you know that you should agree to these terms before we allow you to bid.  We'll present them everytime you bid in case" +
+                " these get updated (which they might without notice):\n\n" +
+                "1. You agree to pay the amount you bid, otherwise we will ban you from bidding.\n" +
+                "2. You cannot advertise any adult content, illegal goods/services, or anything else illegal.\n" +
+                "3. Final approval of advertisements is up to us (BananaCrumbs, LLC.).  If you're not approved, we'll let you know why.\n" +
+                "4. You can't advertise a competing TempMail service (I don't think we need to explain this one).\n" +
+                "5. Specifications for ads are listed on https://tempmail.lol/advertise.html.  Ads that do not fit these specifications will be rejected.\n" +
+                "6. Anything advertised on our platforms you own the copyright of, and give us explicit permission to use on our site for the duration of the advertisement.\n" +
+                "7. Advertisement expirations and starts are based in the UTC timezone.\n" +
+                "8. Chargebacks, later declines, or other payment failures will result in a ban from advertising with us AND deletion of your ad.\n" +
+                "9. Payments are non-refundable.  You can request to have your advertisement removed; however, the cost will not be refunded.\n" +
+                "10. Invoices paid late through Cryptocurrency are non-refundable.\n" +
+                "11. The email which you use to contact us will be sent the invoice.\n\n" +
+                "Type \"agree\" if you have read and agree to the terms above, \"disagree\" or anything else if you disagree to the terms above.");
         
-        openEmailModal("", "", "", "", html, 0);
+        console.log(res);
+        
+        if(res.toLowerCase() === "agree") {
+            document.getElementById("auction_info").hidden = false;
+        }
     }
 </script>
 <style>
@@ -195,7 +238,7 @@
         background-color: rgb(0,0,0); /* Fallback color */
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
-
+    
     /* Modal Content/Box */
     .modal-content {
         background-color: #fefefe;
