@@ -1,25 +1,6 @@
 
-.advert {
-    width: 800px;
-    height: 128px;
-    border: #0D1117AA groove;
-    text-align: center;
-    margin: 0 auto;
-    cursor: pointer;
-}
-
-.ad {
+/*otherwise the ads are left aligned*/
+.adsbygoogle {
     text-align: center;
     padding-top: 10px;
-}
-
-.advert_header {
-    text-align: left;
-    padding-left: 10px;
-}
-
-@media screen and (max-width: 800px) {
-    .advert {
-        width: auto;
-    }
 }
