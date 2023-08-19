@@ -21,6 +21,5 @@
 @media screen and (max-width: 800px) {
     .advert {
         width: auto;
-        min-width: 380px; /*for really small phones*/
     }
 }
