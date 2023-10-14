@@ -128,13 +128,13 @@ function updateStatsElement(emails, clients, text = "We've processed {emails} em
 
 //fetch stats
 setInterval(() => {
-    fetch("https://api.tempmail.lol/stats").then(res => res.json()).then((data) => {
+    fetch("https://api.tempmail.lol/v2/stats").then(res => res.json()).then((data) => {
         console.log(data);
         updateStatsElement(data.emails_received, data.clients_connected);
     });
 }, 5000);
 
-fetch("https://api.tempmail.lol/stats").then(res => res.json()).then((data) => {
+fetch("https://api.tempmail.lol/v2/stats").then(res => res.json()).then((data) => {
     console.log(data);
     updateStatsElement(data.emails_received, data.clients_connected);
 });
