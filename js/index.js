@@ -1,6 +1,6 @@
 
-const GENERATE_URL  = "https://api.tempmail.lol/inbox/create";
-const AUTH_URL_BASE = "https://api.tempmail.lol/inbox?token=";
+const GENERATE_URL  = "https://api.tempmail.lol/v2/inbox/create";
+const AUTH_URL_BASE = "https://api.tempmail.lol/v2/inbox?token=";
 
 let emails = [];
 
