@@ -1,7 +1,6 @@
 
-const GENERATE_URL  = "https://api.tempmail.lol/generate";
-const GENERATE_RUSH = "https://api.tempmail.lol/generate/rush";
-const AUTH_URL_BASE = "https://api.tempmail.lol/auth/";
+const GENERATE_URL  = "https://api.tempmail.lol/inbox/create";
+const AUTH_URL_BASE = "https://api.tempmail.lol/inbox?token=";
 
 let emails = [];
 
@@ -42,14 +41,20 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
 } else {
     
     let url = GENERATE_URL;
+    let rush = false;
     
     console.log(`rush_mode: ${localStorage.getItem("rush_mode")}`);
     
     if(localStorage.getItem("rush_mode") && localStorage.getItem("rush_mode") === "true") {
-        url = GENERATE_RUSH;
+        rush = true;
     }
     
-    fetch(url).then(res => res.json()).then(data => {
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+            community: rush,
+        })
+    }).then(res => res.json()).then(data => {
         console.log(data);
         
         address = data.address;
@@ -70,18 +75,18 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
 setInterval(() => {
     fetch(AUTH_URL_BASE + token).then(res => res.json()).then(data => {
         console.log(data);
-        if(data.token === "invalid") {
+        if(data.expired) {
             clearLS();
             location.reload();
         }
         
         //if there are new emails
-        if(data.email instanceof Array && data.email.length > 0) {
+        if(data.emails instanceof Array && data.emails.length > 0) {
             document.getElementById("click_prompt").style.display = "block";
             
             let old_size = emails.length;
             
-            data.email.forEach(email => {
+            data.emails.forEach(email => {
                 createEmailElement(email.from, email.to, email.subject, email.body, email.html, email.date, false);
                 
                 //if the page is not visible, add an identifier to the title until the user goes back on
@@ -98,7 +103,7 @@ setInterval(() => {
                 }
             });
             
-            emails.push(...data.email);
+            emails.push(...data.emails);
         }
     });
 }, 5000);
