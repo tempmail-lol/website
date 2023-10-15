@@ -205,6 +205,9 @@ function createEmailElement(from, to, subject, body, html, date, custom) {
     
     email.style.cursor = "pointer";
     
+    //sanitize
+    html = DOMPurify.sanitize(html);
+    
     email.onclick = () => {
         openEmailModal(from, to, subject, body, html, date);
     };
