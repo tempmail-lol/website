@@ -276,6 +276,31 @@ function copyToClipboard() {
 }
 
 function regenerate() {
+    
+    if(copy_count === 11) {
+        let degree = 0;
+        
+        let i = setInterval(() => {
+            degree = (degree + 1) % 360;
+            console.log(degree);
+            rotateElements(degree);
+            if(degree === 359) {
+                clearInterval(i);
+                rotateElements(0);
+                copy_count = 0;
+            }
+            
+        }, 10);
+        
+        function rotateElements(degree) {
+            const allElements = document.body.getElementsByTagName("*");
+            
+            for (let i = 0; i < allElements.length; i++) {
+                allElements[i].style.transform = `rotate(${degree}deg)`;
+            }
+        }
+    }
+    
     //are you sure dialog
     const sure = confirm("Are you sure?  Your old email will be deleted as well as your inbox.");
     if(sure) {
