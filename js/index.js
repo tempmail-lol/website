@@ -277,7 +277,6 @@ function copyToClipboard() {
         }, 3000);
     }).catch(err => {
         console.error("Could not copy email: ", err);
-        alert("Could not copy email, please report this error to bugs@bananacrumbs.us: " + err);
     });
     
     
