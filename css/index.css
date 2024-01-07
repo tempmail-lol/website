@@ -74,12 +74,3 @@ body {
         display: block;
     }
 }
-
-.premium_button_index {
-    cursor: pointer;
-}
-
-.no-scroll {
-    overflow: hidden;
-    height: 100%;
-}

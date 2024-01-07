@@ -227,24 +227,16 @@ function openEmailModal(from, to, subject, body, html, date) {
     //email_modal
     document.getElementById("email_modal").style.display = "block";
     document.getElementById("modal_subject").innerText = subject;
-    document.body.classList.add('no-scroll');
 }
 
 document.getElementById("modal_close").onclick = () => {
     document.getElementById("email_modal").style.display = "none";
-    document.body.classList.remove('no-scroll');
-};
-
-document.getElementById("premium_close").onclick = () => {
-    document.getElementById("premium_modal").style.display = "none";
-    document.body.classList.remove('no-scroll');
 };
 
 //whenever outside the modal is clicked, close the modal
 window.onclick = (event) => {
     if(event.target === document.getElementById("email_modal")) {
         document.getElementById("email_modal").style.display = "none";
-        document.body.classList.remove('no-scroll');
     }
 }
 
@@ -334,13 +326,4 @@ function ca_info() {
         " websites; however, please be aware that the original domain owner can see all emails from expired inboxes, should it be removed from the website.\n\n" +
         "If you have your own domain and would like to allow people to use it for temporary email addresses, please add it here: https://tempmail.lol/custom.html\n\n" +
         "Note that community email addresses can be used by the original domain owner.  Do not use these addresses for anything sensitive.");
-}
-
-function login_popup() {
-    
-}
-
-function premium_popup() {
-    document.getElementById("premium_modal").style.display = "block";
-    document.body.classList.add('no-scroll');
 }
