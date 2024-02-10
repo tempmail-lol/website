@@ -126,7 +126,7 @@ setInterval(() => {
  * @param clients {number}
  * @param text {string}
  */
-function updateStatsElement(emails, clients, text = "We've processed {emails} emails with {clients} active inboxes.") {
+function updateStatsElement(emails, clients, text = "We've processed {emails} emails so far!") {
     const stats = document.getElementById("stats");
     stats.innerText = text.replace("{emails}", emails).replace("{clients}", clients);
 }
