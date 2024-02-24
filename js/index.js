@@ -50,10 +50,7 @@ if(localStorage.getItem("address") && localStorage.getItem("token")) {
     }
     
     fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-            community: rush,
-        })
+        method: "GET",
     }).then(res => res.json()).then(data => {
         console.log(data);
         
