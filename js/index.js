@@ -215,7 +215,7 @@ function createEmailElement(from, to, subject, body, html, date, custom) {
 function openEmailModal(from, to, subject, body, html, date) {
     //email_iframe
     //embed the html into the iframe, if it is undefined, embed the body
-    if (html === undefined) {
+    if (!html) {
         document.getElementById("email_iframe").srcdoc = body;
     } else {
         document.getElementById("email_iframe").srcdoc = html;
