@@ -45,19 +45,19 @@ body {
     border-top: 3px solid;
 }
 
-.columns.col-free .fa-ul li::before {
+.columns.col-free .pricing-ul li::before {
     color: black;
 }
 
-.columns.col-plus .fa-ul li::before {
+.columns.col-plus .pricing-ul li::before {
     color: #6d4aff;
 }
 
-.columns.col-ultra .fa-ul li::before {
+.columns.col-ultra .pricing-ul li::before {
     color: #ff6600;
 }
 
-.columns.col-titanium .fa-ul li::before {
+.columns.col-titanium .pricing-ul li::before {
     color: #ff00aa;
 }
 
@@ -114,23 +114,30 @@ body {
     padding-bottom: 100px;
 }
 
-@media only screen and (max-width: 1077px) {
-    .columns {
-        width: 100%;
+
+.pricing_desc {
+    max-width: 50%;
+    margin-left: 25%;
+}
+
+@media only screen and (max-width: 630px) {
+    .pricing_desc {
+        max-width: 95%;
+        margin-left: 2.5%;
     }
 }
 
-.fa-ul {
+.pricing-ul {
     list-style-type: none;
     padding-left: 0;
 }
 
-.fa-ul li {
+.pricing-ul li {
     position: relative;
     padding-left: 2em;
 }
 
-.fa-ul li::before {
+.pricing-ul li::before {
     content: "\f058";
     font-family: "Font Awesome 6 Free";
     font-weight: 900;
@@ -140,16 +147,30 @@ body {
     color: #6d4aff;
 }
 
-.fa-ul li.nl::before {
+.pricing-ul li.nl::before {
     content: none;
 }
 
-.fa-ul li.nl {
+.pricing-ul li.nl {
     padding-left: 0;
 }
 
 
-
-.fa-ul li.nl {
-    padding-left: 0;
+@media only screen and (max-width: 1077px) {
+    .columns {
+        width: 90%;
+        margin-left: 10%;
+        padding-left: 0;
+    }
+    .column-container {
+        margin-left: 0;
+    }
+    .price, .price li {
+        /* Apply 10px margin to the left and right for the price list and its items */
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .pricing-ul {
+        margin-left: 0;
+    }
 }
