@@ -26,7 +26,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/topnav.css">
@@ -39,7 +39,7 @@
     
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ5HBWPCW2"></script>
@@ -50,24 +50,6 @@
         
         gtag('config', 'G-HZ5HBWPCW2');
     </script>
-    <script>
-        function onRushSwitch() {
-            const checked = document.getElementById("rush_mode").checked;
-            if(checked) {
-                localStorage.setItem("rush_mode", "true");
-            } else {
-                localStorage.setItem("rush_mode", "false");
-            }
-            localStorage.removeItem("emails");
-            localStorage.removeItem("address");
-            localStorage.removeItem("token");
-            localStorage.removeItem("creation_time");
-            setTimeout(() => {
-                location.reload();
-            }, 1000);
-        }
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2561999092732135" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -75,9 +57,7 @@
     <nav>
         <div class="topnav" id="topnav">
             <a href="/" class="active">TempMail</a>
-            <a href="/news/">News</a>
             <a href="/contact.html">Contact</a>
-            <a href="/about.html">About</a>
             <a href="https://discord.gg/GHapeHPWVS">Discord Server</a>
             <a href="/custom.html">Custom Domains</a>
             <a href="/pricing.html">Pricing</a>
@@ -97,35 +77,32 @@
         <p>
             Say goodbye to spam!  Generate temporary email addresses to use for other websites without giving away your real email address.
         </p>
-        <p>
-            Notice: we have recently updated our <a href="https://bananacrumbs.us/terms-of-service">terms of service</a>.
-        </p>
-<!--         <p>
-            Notice: we have recently updated our <a href="/privacy-policy.html">privacy policy</a>.
-        </p> -->
     </div>
     <section class="email">
         <div id="ab" style="display: none">
         </div>
         <input type="text" id="email_field" class="email_field" readonly>
-        <section class="">
-            <label for="rush_mode"><h3>Enable <a href="javascript:ca_info()">community addresses</a></h3></label>
-            <label class="switch">
-                <input type="checkbox" id="rush_mode" onclick="onRushSwitch()">
-                <span class="slider round"></span>
-                <script>
-                    const rush_mode = localStorage.getItem("rush_mode");
-                    if(rush_mode === "true") {
-                        document.getElementById("rush_mode").checked = true;
-                    }
-                </script>
-            </label>
-        </section>
     </section>
 </div>
 <section class="email_buttons">
-    <button id="copy_button" class="button" onclick="copyToClipboard()">Copy</button>
-    <button id="regenerate_button" class="button" onclick="regenerate()">Reset</button>
+    <button id="copy_button" class="button" onclick="copyToClipboard()">
+        <i class="fa fa-copy" style="color: black; font-size: 24px;"></i>&nbsp;Copy
+    </button>
+    <button id="regenerate_button" class="button" onclick="regenerate()">
+        <i class="fa fa-refresh" style="color: black; font-size: 24px;"></i>&nbsp;Reset
+    </button>
+    <button id="customize_button" class="button" onclick="customize()">
+        <i class="fa fa-pencil" style="color: black; font-size: 24px;"></i>&nbsp;Edit
+    </button>
+</section>
+<section class="modify_address center" id="mad" hidden>
+    <h2>Make a new address with a prefix</h2>
+    <label for="prefix" style="font-size: x-large;">Email Prefix:</label>
+    <br><br>
+    <input type="text" class="email_field" id="prefix" placeholder="Enter your prefix">
+    <p id="prefix-error" hidden><b>Error: prefix must be letters, numbers, underscores, and hyphens only.</b></p>
+    <br>
+    <button class="button" onclick="customize(document.getElementById('prefix').value)">Change Address</button>
 </section>
 <section class="inbox_container">
     <table class="inbox" id="inbox_table">
@@ -153,7 +130,7 @@
 </div>
 <section class="about_ee">
     <h1>What is TempMail?</h1>
-    <p>
+    <p style="text-align: justify;">
         TempMail is a temporary email address generator.  It generates temporary email addresses to use for other websites without giving away your real email address.
         TempMail is also known as 10minutemail, fake email, burner email, and throwaway email.  Free Wi-Fi, forum owners, and websites require that
         you signup with an email address before allowing you to access content.
@@ -172,11 +149,11 @@
         <a href="https://discord.gg/GHapeHPWVS">Discord Server</a> |
         <a href="mailto:contact@bananacrumbs.us">Email</a> |
         <a href="https://bananacrumbs.us/pubkey.txt">GPG Key</a> |
-        <a href="/pricing.html">TempMail Plus</a>
+        <a href="/pricing.html">Pricing</a>
     </p>
     <hr>
     <p property="dc:rights">Copyright &copy;
-        <span property="dc:dateCopyrighted">2023</span>
+        <span property="dc:dateCopyrighted">2023-2024</span>
         <span property="dc:publisher">BananaCrumbs, LLC.</span>
         All Right Reserved.
     </p>

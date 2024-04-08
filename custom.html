@@ -26,7 +26,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="/css/topnav.css">
@@ -41,28 +41,17 @@
     <link rel="icon" href="https://tempmail.lol/logo.png" type="image/png">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HZ5HBWPCW2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        
-        gtag('config', 'G-HZ5HBWPCW2');
-    </script>
+    <style>
+    </style>
 </head>
 <body>
 <nav>
     <div class="topnav" id="topnav">
         <a href="/" class="active">TempMail</a>
-        <a href="/news/">News</a>
         <a href="/contact.html">Contact</a>
-        <a href="/about.html">About</a>
         <a href="https://discord.gg/GHapeHPWVS">Discord Server</a>
         <a href="/custom.html">Custom Domains</a>
         <a href="/pricing.html">Pricing</a>
-        <a href="/auction.html">Auction</a>
         <a href="javascript:void(0);" class="icon" onclick="topnav_resize()">
             <i class="fa fa-bars"></i>
         </a>
@@ -76,114 +65,40 @@
     </section>
     <div class="desc">
         <h2>
-            Custom Domain Mode
+            Custom Domains
         </h2>
         <!--stats will be populated by js-->
         <p id="stats"></p>
     </div>
 </div>
 <section class="email" id="phase1">
-    <h2>What would you like to do?</h2>
-    <button class="button" onclick="addCommunity()" style="width: 50%;">Add a community domain</button>
+    <h1>Custom Domains have moved!</h1>
+    <h2>If you have a TempMail Account, <a href="https://accounts.tempmail.lol">view and configure your domain here</a>.</h2>
+    <p>Legacy users can migrate their accounts to check custom domains.</p>
+    <p>If you are a legacy user and still need to access the old custom domains menu, click <a href="/private-custom.html">here</a> (note: legacy IDs ONLY).</p>
+    <p>Custom Domains require a <a href="/pricing.html">TempMail Plus</a> or <a href="/pricing.html">TempMail Ultra</a> subscription.</p>
+</section>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="mega_header center foot">
+    <p>
+        By using this site, you agree to the <a href="/privacy-policy.html">Privacy policy</a> and <a href="/terms-of-use.html">Terms of Use</a>.
+    </p>
     <hr>
-    <h2>If you have a new <a href="https://accounts.tempmail.lol">TempMail Account</a>, view and configure your domain <a href="https://accounts.tempmail.lol">here</a>.</h2>
-    <h3>Unmigrated BananaCrumbs ID Users can view/configure below</h3>
-    <button class="button" onclick="addNewCustom()" style="width: 50%;">Configure or add a private custom domain</button>
-    <button class="button" onclick="useExistingCustom()" style="width: 50%;">View emails on an existing private domain</button>
-    <p>Note: adding community domains will allow anyone to create email addresses with them!</p>
-    <p>If you want to remove a public domain, simply remove the TempMail records on the domain.</p>
-    <p>Private custom domains require a <a href="/pricing.html">TempMail Plus</a> or <a href="/pricing.html">TempMail Ultra</a> subscription.</p>
-</section>
-<section class="phase_1.9 email" id="phase1.9" hidden>
-    <h1>Would you like your domain to be added to the public pool of domains?</h1>
-    <p>If you select yes, anyone will be able to generate an address which uses your domain.</p>
-    <p>Public domains are also checked regularly to ensure that they still work.  Domains may be removed at any time for any reason.</p>
-    <p>If you select no, you will be given an input for your BananaCrumbs ID and Token to use your domain.</p>
-    <button class="button" onclick="opt19Public()">Public</button>
-    <button class="button" onclick="opt19Private()">Private</button>
-</section>
-<section class="phase_1.1whatever email" id="phase_1.9.9" hidden>
-    <h1>Adding Public Domains</h1>
-    <p>First, change the MX record of your domain to be:</p>
-    <pre>mx.[your-domain]</pre>
-    <p>Where [your-domain] is your website URL.</p>
-    <p>Afterwards, create an "A" record with the name "mx" that points to:</p>
-    <pre>129.146.248.147</pre>
+    <p class="promos">
+        <a href="https://api.tempmail.lol/">Developer API</a> |
+        <a href="https://discord.gg/GHapeHPWVS">Discord Server</a> |
+        <a href="mailto:contact@bananacrumbs.us">Email</a> |
+        <a href="https://bananacrumbs.us/pubkey.txt">GPG Key</a> |
+        <a href="/pricing.html">Pricing</a>
+    </p>
     <hr>
-    <p>Once you have finished, input your domain name and click continue.</p>
-    <p>IMPORTANT: ANYONE WILL BE ABLE TO RECEIVE EMAIL AT THIS DOMAIN.  Make sure you know what you are doing.</p>
-    <b>Domains with an existing _tmpml text record will be rejected.</b>
-    <p>As per the <a href="/privacy-policy.html">privacy policy</a>, your IP address will be temporarily stored to prevent spam.</p>
-    <input type="text" class="email_field" id="input_domain"><br>
-    <button class="button" onclick="continueCustom199()">Continue</button>
-</section>
-<section class="phase_2 email" id="phase2" hidden>
-    <h1>Please copy the following two strings:</h1>
-    <h2>Note: you will need <a href="https://tempmail.lol/pricing.html">TempMail Plus</a> or <a href="/pricing.html">TempMail Ultra</a> to use private domains.</h2>
-    <h3>Add this string as a TXT record with the name "_tmpml":</h3>
-    <pre id="domain_hash"></pre>
-    <h3>Save the string below somewhere.  You will need it to access the inbox:</h3>
-    <pre id="unhashed"></pre>
-    <h1>After that, set the MX record for your domain:</h1>
-    <pre>mx.exploding.email</pre>
-    <button class="button" onclick="yesCustomDomains()">Next</button>
-</section>
-<section class="email" id="email_set" hidden>
-    <h2>Your Custom Domain is:</h2>
-    <input type="text" id="email_field" class="email_field" readonly>
-    <h3>As long as the token is correct, any emails sent to this domain will be received here.</h3>
-    <button onclick="clearLS()" class="button">Reset</button>
-</section>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2561999092732135"
-        crossorigin="anonymous"></script>
-<!-- front_page -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2561999092732135"
-     data-ad-slot="6275527838"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-<section class="inbox_container" id="phase3" hidden>
-    <table class="inbox" id="inbox_table">
-        <tr>
-            <th>From</th>
-            <th>Date Sent</th>
-            <th>To</th>
-            <th>Subject</th>
-        </tr>
-    </table>
-    <div class="waiting_container">
-        <h1 id="waiting">Waiting for emails</h1>
-    </div>
-    <div class="click_prompt" id="click_prompt">
-        <h1>Click to open email.</h1>
-    </div>
-</section>
-<div id="email_modal" class="modal">
-    <div class="modal-content">
-        <h2 class="modal_subject_header">Subject:&nbsp;&nbsp;</h2>
-        <h2 id="modal_subject" class="modal_subject"></h2>
-        <span id="modal_close" class="close">&times;</span>
-        <iframe id="email_iframe" src=""></iframe>
-    </div>
+    <p property="dc:rights">Copyright &copy;
+        <span property="dc:dateCopyrighted">2023-2024</span>
+        <span property="dc:publisher">BananaCrumbs, LLC.</span>
+        All Right Reserved.
+    </p>
 </div>
 </body>
+
 <script async src="/js/topnav.js"></script>
-<script>
-    function useExistingCustom() {
-        location.href = "/private-custom.html";
-    }
-    
-    
-    function addCommunity() {
-        location.href = "/add-community.html";
-    }
-    
-    function addNewCustom() {
-        location.href = "/configure.html";
-    }
-</script>
 </html>

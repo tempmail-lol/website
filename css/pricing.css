@@ -3,7 +3,9 @@
 }
 
 body {
-    font-family: Ubuntu,"serif";
+    font-family: Roboto,"serif";
+    display: flex;
+    flex-direction: column;
 }
 
 .columns {
@@ -12,54 +14,142 @@ body {
     padding: 8px;
 }
 
-.price {
-    list-style-type: none;
-    border: 1px solid #eee;
-    margin: 0;
-    padding: 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
+
+.columns.col-free .price {
+    border-top-color: black;
 }
 
-.price:hover {
-    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+.columns.col-plus .price {
+    border-top-color: #6d4aff;
+}
+
+.columns.col-ultra .price {
+    border-top-color: #ff6600;
+}
+
+.columns.col-titanium .price {
+    border-top-color: #ff00aa;
+}
+
+.column-container {
+    max-width: 90%;
+    margin-left: 2.5%;
+    flex: 1,
+}
+
+.price {
+    list-style-type: none;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    border-top: 3px solid;
+}
+
+.columns.col-free .fa-ul li::before {
+    color: black;
+}
+
+.columns.col-plus .fa-ul li::before {
+    color: #6d4aff;
+}
+
+.columns.col-ultra .fa-ul li::before {
+    color: #ff6600;
+}
+
+.columns.col-titanium .fa-ul li::before {
+    color: #ff00aa;
 }
 
 .price .header {
     background-color: #111;
     color: white;
-    font-size: 25px;
+    max-height: 10px;
+    margin: 0;
 }
 
 .price li {
-    border-bottom: 1px solid #eee;
-    padding: 20px;
-    text-align: center;
+    padding: 10px;
+    text-align: left;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-.price .grey {
-    background-color: #eee;
-    font-size: 20px;
+.price li .np {
+    padding: 0;
+    text-align: left;
 }
 
 .button {
-    background-color: #6d4aff;
+    background-color: #0b7fd3;
     border: none;
     color: white;
     padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     font-size: 18px;
+    margin-left: 0;
+    animation-name: button-animation; /* Add this line */
+    animation-duration: 0.3s;
+    --webkit-transition-duration: 0.3s;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #136eaf;
+    color: white;
+    cursor: pointer;
 }
 
 .pricing_header {
+    padding-top: 100px;
+    padding-bottom: 10px;
     text-align: center;
-    font-size: 40px;
+    font-size: 36px;
     font-weight: bold;
 }
 
-@media only screen and (max-width: 600px) {
+.pricing_desc {
+    padding-bottom: 100px;
+}
+
+@media only screen and (max-width: 1077px) {
     .columns {
         width: 100%;
     }
+}
+
+.fa-ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.fa-ul li {
+    position: relative;
+    padding-left: 2em;
+}
+
+.fa-ul li::before {
+    content: "\f058";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    color: #6d4aff;
+}
+
+.fa-ul li.nl::before {
+    content: none;
+}
+
+.fa-ul li.nl {
+    padding-left: 0;
+}
+
+
+
+.fa-ul li.nl {
+    padding-left: 0;
 }

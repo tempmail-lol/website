@@ -2,32 +2,32 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://tempmail.lol/</loc>
-        <lastmod>2023-04-17T19:30:00-07:00</lastmod>
+        <lastmod>2024-04-7T18:20:00-07:00</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://tempmail.lol/contact.html</loc>
-        <lastmod>2023-04-17T19:30:00-07:00</lastmod>
-        <priority>0.5</priority>
+        <loc>https://tempmail.lol/pricing.html</loc>
+        <lastmod>2024-04-7T18:20:00-07:00</lastmod>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://tempmail.lol/custom.html</loc>
+        <lastmod>2024-04-7T18:20:00-07:00</lastmod>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://tempmail.lol/about.html</loc>
-        <lastmod>2023-04-17T19:30:00-07:00</lastmod>
+        <lastmod>2024-04-7T18:20:00-07:00</lastmod>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://tempmail.lol/privacy-policy.html</loc>
-        <lastmod>2023-04-17T19:30:00-07:00</lastmod>
+        <lastmod>2024-04-7T18:20:00-07:00</lastmod>
         <priority>0.1</priority>
     </url>
     <url>
         <loc>https://tempmail.lol/cookies.html</loc>
-        <lastmod>2023-04-17T19:30:00-07:00</lastmod>
-        <priority>0.1</priority>
-    </url>
-    <url>
-        <loc>https://tempmail.lol/custom.html</loc>
-        <lastmod>2023-04-17T19:30:00-07:00</lastmod>
+        <lastmod>2024-04-7T18:20:00-07:00</lastmod>
         <priority>0.1</priority>
     </url>
 </urlset>

@@ -212,6 +212,14 @@ function createEmailElement(from, to, subject, body, html, date, custom) {
     document.getElementById("inbox_table").appendChild(email);
 }
 
+setInterval(() => {
+    if(document.getElementById("email_modal").style.display === "flex") {
+        document.body.style.overflow = "hidden";
+    } else {
+        document.body.style.overflow = ""
+    }
+}, 10);
+
 function openEmailModal(from, to, subject, body, html, date) {
     //email_iframe
     //embed the html into the iframe, if it is undefined, embed the body
@@ -222,7 +230,7 @@ function openEmailModal(from, to, subject, body, html, date) {
     }
     
     //email_modal
-    document.getElementById("email_modal").style.display = "block";
+    document.getElementById("email_modal").style.display = "flex";
     document.getElementById("modal_subject").innerText = subject;
 }
 
@@ -247,9 +255,13 @@ function copyToClipboard() {
     ef.setSelectionRange(0, 99999);
     
     navigator.clipboard.writeText(ef.value).then(() => {
+        ef.select();
+        ef.setSelectionRange(0, 0);
+        
         const copy_button = document.getElementById("copy_button");
         //change the text to "copied" with a checkmark unicode
         copy_button.innerHTML = "&#x2713; Copied!";
+        
         
         copy_count++;
         
@@ -262,7 +274,7 @@ function copyToClipboard() {
         if(copy_timeout) clearInterval(copy_timeout);
         
         copy_timeout = setTimeout(() => {
-            copy_button.innerHTML = "Copy";
+            copy_button.innerHTML = '<i class="fa fa-copy" style="color: black; font-size: 24px;"></i>&nbsp;Copy';
         }, 3000);
     }).catch(err => {
         console.error("Could not copy email: ", err);
@@ -272,7 +284,7 @@ function copyToClipboard() {
     
 }
 
-function regenerate() {
+async function regenerate() {
     
     if(copy_count === 11) {
         let degree = 0;
@@ -299,8 +311,11 @@ function regenerate() {
     }
     
     //are you sure dialog
-    const sure = confirm("Are you sure?  Your old email will be deleted as well as your inbox.");
+    const sure = confirm("By resetting, this email will be deleted forever, and any emails in its inbox will be erased.");
     if(sure) {
+        
+        await fetch("https://api.tempmail.lol/v2/inbox/delete?token=" + localStorage.getItem("token"));
+        
         localStorage.removeItem("emails");
         localStorage.removeItem("address");
         localStorage.removeItem("token");
@@ -323,4 +338,43 @@ function ca_info() {
         " websites; however, please be aware that the original domain owner can see all emails from expired inboxes, should it be removed from the website.\n\n" +
         "If you have your own domain and would like to allow people to use it for temporary email addresses, please add it here: https://tempmail.lol/custom.html\n\n" +
         "Note that community email addresses can be used by the original domain owner.  Do not use these addresses for anything sensitive.");
+}
+
+document.getElementById("prefix").addEventListener("input", () => {
+    document.getElementById("prefix-error").hidden = true;
+});
+
+function customize(input) {
+    if(!input) {
+        document.getElementById("mad").hidden = !document.getElementById("mad").hidden;
+        return;
+    }
+    
+    if(!input.match(/^[a-z0-9_-]{1,50}$/)) {
+        document.getElementById("prefix-error").hidden = false;
+        return;
+    }
+    
+    fetch("https://api.tempmail.lol/v2/inbox/create", {
+        method: "POST",
+        body: JSON.stringify({
+            prefix: input,
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(res => res.json()).then(data => {
+        console.log(data);
+        
+        address = data.address;
+        token = data.token;
+        
+        document.getElementById("email_field").value = address;
+        
+        localStorage.setItem("address", address);
+        localStorage.setItem("token", token);
+        
+        //set creation time to be the current time plus 1 hour
+        localStorage.setItem("creation_time", String(Date.now() + 3600000));
+    });
 }
