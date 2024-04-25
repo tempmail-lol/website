@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form onsubmit="checkCredentials(event)">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Enter admin username">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter admin password">
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        async function checkCredentials(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            const mfa = await fetch("https://api.tempmail.lol/admin-login?username=" + username + "&password=" + password);
+            
+            const json = await mfa.json();
+            
+            if(json.error) {
+                alert("error getting mfa code for admin page: incorrect password");
+                return;
+            }
+            
+            alert("Success, run `/mfa " + json.discord_2fa_auth_command + "` in the server to access the admin page.");
+        }
+    </script>
+</body>
+</html>

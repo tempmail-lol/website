@@ -3,3 +3,4 @@ Allow: /
 Disallow: /wp-admin/
 Sitemap: https://tempmail.lol/news/wp-sitemap.xml
 Sitemap: https://tempmail.lol/sitemap.xml
+Disallow: /admin.html
