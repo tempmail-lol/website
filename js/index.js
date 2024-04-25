@@ -336,7 +336,7 @@ function topnav_resize() {
 function ca_info() {
     alert("Community addresses use domains people have given to the website (such as @example.com).\n\nThis can help to avoid TempMail detection on some" +
         " websites; however, please be aware that the original domain owner can see all emails from expired inboxes, should it be removed from the website.\n\n" +
-        "If you have your own domain and would like to allow people to use it for temporary email addresses, please add it here: https://tempmail.lol/custom.html\n\n" +
+        "If you have your own domain and would like to allow people to use it for temporary email addresses, please add it here: https://tempmail.lol/custom\n\n" +
         "Note that community email addresses can be used by the original domain owner.  Do not use these addresses for anything sensitive.");
 }
 
