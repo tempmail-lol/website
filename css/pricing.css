@@ -8,12 +8,22 @@ body {
     flex-direction: column;
 }
 
-.columns {
-    float: left;
-    width: 25%;
-    padding: 8px;
+.column-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 2.5%;
+    flex: 1;
 }
 
+.columns {
+    width: 25%;
+    padding: 8px;
+    box-sizing: border-box;
+}
 
 .columns.col-free .price {
     border-top-color: black;
@@ -29,12 +39,6 @@ body {
 
 .columns.col-titanium .price {
     border-top-color: #ff00aa;
-}
-
-.column-container {
-    max-width: 90%;
-    margin-left: 2.5%;
-    flex: 1,
 }
 
 .price {
@@ -103,17 +107,12 @@ body {
 }
 
 .pricing_header {
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom: 10px;
     text-align: center;
     font-size: 36px;
     font-weight: bold;
 }
-
-.pricing_desc {
-    padding-bottom: 100px;
-}
-
 
 .pricing_desc {
     max-width: 50%;
@@ -155,15 +154,11 @@ body {
     padding-left: 0;
 }
 
-
 @media only screen and (max-width: 1077px) {
     .columns {
         width: 90%;
-        margin-left: 10%;
+        margin-left: 5%;
         padding-left: 0;
-    }
-    .column-container {
-        margin-left: 0;
     }
     .price, .price li {
         /* Apply 10px margin to the left and right for the price list and its items */
